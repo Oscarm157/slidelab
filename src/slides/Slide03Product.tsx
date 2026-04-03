@@ -2,6 +2,7 @@
 
 import { Slide } from "@/components/Slide";
 import { QuoteBlock } from "@/components/QuoteBlock";
+import { StaggerReveal, StaggerItem } from "@/components/StaggerReveal";
 
 // ─────────────────────────────────────────────
 // Producto — Specs + imagen en 2 columnas
@@ -24,9 +25,9 @@ const distribution = [
 export function Slide03Product() {
   return (
     <Slide variant="dark">
-      <div className="stagger-in grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <StaggerReveal className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Columna izquierda — specs */}
-        <div className="flex flex-col justify-center">
+        <StaggerItem className="flex flex-col justify-center">
           <div className="mb-5">
             <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
             <div className="w-[60px] h-[2px] bg-primary mb-3" />
@@ -69,17 +70,17 @@ export function Slide03Product() {
             text="El producto que supera el estándar de mercado en su rango de precio."
             variant="dark"
           />
-        </div>
+        </StaggerItem>
 
         {/* Columna derecha — imagen */}
-        <div className="rounded-2xl overflow-hidden bg-card shadow-2xl shadow-black/30 w-4/5 mx-auto lg:mx-0 mt-6 lg:mt-0">
+        <StaggerItem className="rounded-2xl overflow-hidden bg-card shadow-[0_8px_30px_rgba(0,0,0,0.25)] w-4/5 mx-auto lg:mx-0 mt-6 lg:mt-0">
           <img
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
             alt="Render arquitectónico"
             className="w-full h-auto block"
           />
-        </div>
-      </div>
+        </StaggerItem>
+      </StaggerReveal>
     </Slide>
   );
 }

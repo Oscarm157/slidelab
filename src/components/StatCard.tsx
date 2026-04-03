@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { AnimatedCounter } from "./AnimatedCounter";
 
 interface StatCardProps {
@@ -22,11 +23,18 @@ export function StatCard({
   variant = "dark",
 }: StatCardProps) {
   const styles = variant === "dark"
-    ? "bg-card border-card-border/50 shadow-lg shadow-black/20"
-    : "bg-white border-[#ddd] shadow-md shadow-black/5";
+    ? "bg-card/80 shadow-[0_2px_12px_rgba(0,0,0,0.15)]"
+    : "bg-white/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)]";
 
   return (
-    <div className={`rounded-2xl border p-5 ${styles}`}>
+    <motion.div
+      whileHover={{ y: -3, boxShadow: variant === "dark"
+        ? "0 8px 30px rgba(0,0,0,0.25)"
+        : "0 8px 30px rgba(0,0,0,0.08)"
+      }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      className={`rounded-2xl p-5 ${styles}`}
+    >
       <div className="font-mono text-3xl sm:text-4xl text-gradient mb-2 font-medium">
         {animate ? (
           <AnimatedCounter target={value} prefix={prefix} suffix={suffix} decimals={decimals} />
@@ -35,6 +43,6 @@ export function StatCard({
         )}
       </div>
       <p className="text-muted text-sm">{label}</p>
-    </div>
+    </motion.div>
   );
 }

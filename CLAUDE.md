@@ -7,7 +7,8 @@ Un pitch deck / presentación web construido con Next.js, desplegable en Vercel.
 - Next.js 16 (App Router) + React 19 + TypeScript
 - Tailwind CSS 4 (config via `@theme inline` en globals.css, NO hay tailwind.config.js)
 - Recharts para gráficas
-- CSS puro para animaciones (NO uses framer-motion)
+- motion.dev para animaciones interactivas (transiciones, hover, stagger)
+- CSS para animaciones simples (shimmer, pulse, glow, fade-in)
 - Google Fonts via `next/font/google`
 - Material Symbols Outlined para íconos
 
@@ -60,7 +61,9 @@ Edita `src/config/deck.config.ts`. Los colores se inyectan como CSS variables au
 Si cambias los fonts, también actualiza los imports en `src/app/layout.tsx`.
 
 ## Convenciones
-- **Animaciones:** Usa las clases CSS de `styles/animations.css` (slide-enter, stagger-in, hero-fade-in, etc.). No instales framer-motion.
+- **Animaciones interactivas:** Usa motion.dev (`import { motion } from "motion/react"`). Para hover, transiciones, stagger reveals.
+- **Animaciones simples:** Usa clases CSS de `styles/animations.css` (shimmer, pulse, glow, hero-fade-in).
+- **Stagger reveal:** Usa `<StaggerReveal>` + `<StaggerItem>` en vez de la clase CSS `stagger-in`.
 - **Íconos:** Usa Material Symbols Outlined: `<span className="material-symbols-outlined">icon_name</span>`. Catálogo: https://fonts.google.com/icons
 - **Slides dark/light:** Alterna entre `variant="dark"` y `variant="light"` para contraste visual.
 - **Responsive:** Usa breakpoints de Tailwind (sm:, md:, lg:). Mobile-first.

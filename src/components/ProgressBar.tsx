@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "motion/react";
+
 interface ProgressBarProps {
   current: number;
   total: number;
@@ -8,9 +12,10 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-[3px] bg-white/10 z-50">
-      <div
-        className="h-full bg-primary transition-all duration-500 ease-out"
-        style={{ width: `${progress}%` }}
+      <motion.div
+        className="h-full bg-primary"
+        animate={{ width: `${progress}%` }}
+        transition={{ type: "spring", stiffness: 200, damping: 25 }}
       />
     </div>
   );

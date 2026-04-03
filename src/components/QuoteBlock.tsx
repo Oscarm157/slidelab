@@ -5,12 +5,12 @@ interface QuoteBlockProps {
 }
 
 export function QuoteBlock({ text, author, variant = "dark" }: QuoteBlockProps) {
-  const bg = variant === "dark"
-    ? "bg-card/80 border-l-primary"
-    : "bg-white/80 border-l-primary";
+  const styles = variant === "dark"
+    ? "bg-card/60 shadow-[0_2px_12px_rgba(0,0,0,0.1)]"
+    : "bg-white/60 shadow-[0_2px_12px_rgba(0,0,0,0.03)]";
 
   return (
-    <blockquote className={`border-l-[3px] ${bg} px-6 py-5 rounded-r-xl`}>
+    <blockquote className={`border-l-[3px] border-primary px-6 py-5 rounded-r-xl ${styles}`}>
       <p className="font-display text-lg sm:text-xl opacity-80 italic leading-relaxed">
         &ldquo;{text}&rdquo;
       </p>

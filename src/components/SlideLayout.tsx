@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useCallback, Children } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { useSlideNavigation } from "@/hooks/useSlideNavigation";
 import { useKeyboardNav } from "@/hooks/useKeyboardNav";
 import { useTouchNav } from "@/hooks/useTouchNav";
@@ -12,6 +13,24 @@ interface SlideLayoutProps {
   children: React.ReactNode;
 }
 
+const variants = {
+  enter: (dir: string) => ({
+    opacity: 0,
+    x: dir === "next" ? 60 : -60,
+    filter: "blur(4px)",
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+  },
+  exit: (dir: string) => ({
+    opacity: 0,
+    x: dir === "next" ? -60 : 60,
+    filter: "blur(4px)",
+  }),
+};
+
 export function SlideLayout({ children }: SlideLayoutProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const slides = Children.toArray(children);
@@ -19,6 +38,7 @@ export function SlideLayout({ children }: SlideLayoutProps) {
 
   const {
     current,
+    direction,
     totalSlides,
     next,
     prev,
@@ -52,32 +72,27 @@ export function SlideLayout({ children }: SlideLayoutProps) {
     enabled: navigation.enableTouch,
   });
 
-  // Evitar flash de contenido antes de hidratar
   if (!mounted) {
-    return (
-      <div className="w-screen h-dvh bg-bg-dark" />
-    );
+    return <div className="w-screen h-dvh bg-bg-dark" />;
   }
 
   return (
     <div ref={containerRef} className="relative w-screen h-dvh overflow-hidden bg-bg-dark">
-      {/* Slides con transiciones */}
-      {slides.map((slide, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            i === current
-              ? "opacity-100 translate-x-0 pointer-events-auto"
-              : i < current
-              ? "opacity-0 -translate-x-full pointer-events-none"
-              : "opacity-0 translate-x-full pointer-events-none"
-          }`}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={current}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="absolute inset-0"
         >
-          {slide}
-        </div>
-      ))}
+          {slides[current]}
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Navegación superior */}
       <SlideNavigation
         current={current}
         total={totalSlides}
@@ -90,7 +105,6 @@ export function SlideLayout({ children }: SlideLayoutProps) {
         enableFullscreen={navigation.enableFullscreen}
       />
 
-      {/* Barra de progreso */}
       {navigation.showProgress && (
         <ProgressBar current={current} total={totalSlides} />
       )}
