@@ -21,19 +21,20 @@ src/
 │   ├── layout.tsx           → Root layout, carga fonts e inyecta CSS vars
 │   ├── page.tsx             → Ensambla los slides en SlideLayout
 │   └── globals.css          → Tailwind + tema + estilos base
-├── components/              → Componentes reutilizables
-│   ├── SlideLayout.tsx      → Orquestador de navegación y transiciones
-│   ├── Slide.tsx            → Wrapper de cada slide (variant: dark/light)
-│   ├── SlideNavigation.tsx  → Barra superior (contador, flechas, fullscreen)
-│   ├── ProgressBar.tsx      → Barra de progreso inferior
-│   ├── SectionHeader.tsx    → Encabezado de sección (número + título)
-│   ├── StatCard.tsx         → Card de métrica con counter animado
-│   ├── FeatureCard.tsx      → Card con ícono + título + descripción
-│   ├── QuoteBlock.tsx       → Cita estilizada
-│   ├── TimelineBlock.tsx    → Timeline horizontal de fases
-│   ├── ImageZoom.tsx        → Lupa interactiva sobre imágenes
-│   ├── ChartWrapper.tsx     → Wrapper para gráficas Recharts
-│   └── AnimatedCounter.tsx  → Contador animado
+├── components/              → 44 componentes reutilizables
+│   ├── **Infraestructura:** SlideLayout, Slide, SlideNavigation, ProgressBar, FullscreenToggle
+│   ├── **Encabezados:** SectionHeader
+│   ├── **Cards:** FeatureCard, StatCard, ValueCard, CaseStudyCard, TestimonialCard, SpeakerCard
+│   ├── **Texto:** QuoteBlock, IconList, ProConList
+│   ├── **Datos:** AnimatedCounter, KPIRow, DataCallout, MetricDelta, MiniChart, ComparisonTable
+│   ├── **Charts:** ChartWrapper, FunnelChart
+│   ├── **Proceso:** TimelineBlock, ProcessFlow, MilestoneTimeline, StepByStep
+│   ├── **Precios:** PricingTable
+│   ├── **People:** TeamGrid, OrgChart
+│   ├── **Visual:** ImageZoom, ImageGrid, LogoCloud, BeforeAfter, FloorPlanViewer
+│   ├── **Layout:** SplitSlide, CardGrid, FeatureShowcase, MatrixGrid, SpecSheet
+│   ├── **Eventos:** AgendaList, CountdownTimer, MapEmbed
+│   └── **Motion:** StaggerReveal + StaggerItem
 ├── slides/                  → Un archivo por slide
 ├── hooks/                   → Lógica de navegación
 └── styles/animations.css    → Keyframes CSS reutilizables

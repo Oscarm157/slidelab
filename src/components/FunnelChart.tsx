@@ -9,6 +9,9 @@ interface FunnelChartProps {
   variant?: "dark" | "light";
 }
 
+// Opacidades progresivas para las barras del funnel
+const barOpacities = ["100%", "80%", "60%", "40%", "25%"];
+
 export function FunnelChart({ stages, variant = "light" }: FunnelChartProps) {
   const maxValue = Math.max(...stages.map((s) => s.value));
 
@@ -16,34 +19,32 @@ export function FunnelChart({ stages, variant = "light" }: FunnelChartProps) {
     <div className="space-y-2 max-w-2xl mx-auto">
       {stages.map((stage, i) => {
         const widthPercent = (stage.value / maxValue) * 100;
-        const opacity = 1 - i * (0.6 / stages.length);
         const conversionRate = i > 0 ? ((stage.value / stages[i - 1].value) * 100).toFixed(0) : null;
+        const isTop = i < 2;
 
         return (
           <div key={stage.label}>
-            {/* Tasa de conversión entre etapas */}
             {conversionRate && (
               <div className="text-center mb-1">
-                <span className="text-[10px] font-mono text-muted/50">
-                  ↓ {conversionRate}%
-                </span>
+                <span className="text-[10px] font-mono text-muted/50">↓ {conversionRate}%</span>
               </div>
             )}
 
-            {/* Barra */}
             <div className="flex items-center justify-center">
               <div
-                className="rounded-xl px-5 py-3 flex items-center justify-between transition-all duration-500"
+                className={`rounded-xl px-5 py-3 flex items-center justify-between transition-all duration-500 ${
+                  isTop ? "bg-primary text-white" : variant === "dark" ? "bg-card" : "bg-primary/15"
+                }`}
                 style={{
                   width: `${widthPercent}%`,
                   minWidth: "200px",
-                  backgroundColor: `color-mix(in srgb, var(--t-primary) ${opacity * 100}%, ${variant === "dark" ? "#141414" : "#F5F0EB"})`,
+                  opacity: barOpacities[i] ?? "20%",
                 }}
               >
-                <span className={`text-sm font-medium ${i < 2 ? "text-white" : variant === "dark" ? "text-fg-light" : "text-fg-dark"}`}>
+                <span className={`text-sm font-medium ${isTop ? "text-white" : ""}`}>
                   {stage.label}
                 </span>
-                <span className={`font-mono text-sm font-medium ${i < 2 ? "text-white" : "text-primary"}`}>
+                <span className={`font-mono text-sm font-medium ${isTop ? "text-white" : "text-primary"}`}>
                   {stage.value.toLocaleString()}{stage.suffix}
                 </span>
               </div>

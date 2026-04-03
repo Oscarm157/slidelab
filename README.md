@@ -25,10 +25,12 @@ Abre [http://localhost:3000](http://localhost:3000) para ver tu presentación.
 ## Qué incluye
 
 - **Navegación completa** — Flechas del teclado, swipe en móvil, pantalla completa (tecla F)
-- **6 slides de ejemplo** — Portada, concepto con cards, métricas con gráfica, timeline, producto con lupa interactiva, contacto
-- **Componentes listos para usar** — StatCard, FeatureCard, QuoteBlock, TimelineBlock, ImageZoom, ChartWrapper, AnimatedCounter
-- **Animaciones CSS** — Entradas escalonadas, fade-ins, counters animados, shimmer, glow
+- **6 slides de ejemplo** — Portada, concepto, métricas, timeline, producto, contacto
+- **44 componentes** — Cards, métricas, gráficas, timelines, pricing, team grids, org charts, funnels, maps, y más
+- **motion.dev integrado** — Transiciones spring entre slides, hover elevation, stagger reveals
+- **Animaciones CSS** — Fade-ins, counters animados, shimmer, glow
 - **Tema configurable** — Un solo archivo para cambiar colores, tipografía y comportamiento
+- **Catálogo visual** — Ve todos los componentes en `/components`
 - **Responsive** — Se ve bien en móvil, tablet y desktop
 - **Deploy en Vercel** — Zero config, funciona directo
 
@@ -97,6 +99,7 @@ En la carpeta `.skills/` hay guías paso a paso para tareas comunes:
 
 - [Next.js 16](https://nextjs.org/) — Framework React
 - [Tailwind CSS 4](https://tailwindcss.com/) — Estilos utilitarios
+- [motion.dev](https://motion.dev/) — Animaciones spring
 - [Recharts](https://recharts.org/) — Gráficas
 - [Material Symbols](https://fonts.google.com/icons) — Íconos
 - [Vercel](https://vercel.com/) — Deploy
