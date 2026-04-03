@@ -39,17 +39,18 @@ export default function RootLayout({
   const { theme } = deckConfig;
 
   // Inyecta los colores del config como CSS variables
+  // Usa prefijo --t- para evitar conflicto con @theme inline
   const cssVars: Record<string, string> = {
-    "--color-primary": theme.primary,
-    "--color-primary-light": theme.primaryLight,
-    "--color-bg-dark": theme.background,
-    "--color-bg-light": theme.backgroundLight,
-    "--color-fg-dark": theme.foreground,
-    "--color-fg-light": theme.foregroundLight,
-    "--color-muted": theme.muted,
-    "--color-card": theme.card,
-    "--color-card-light": theme.cardLight,
-    "--color-card-border": theme.cardBorder,
+    "--t-primary": theme.primary,
+    "--t-primary-light": theme.primaryLight,
+    "--t-bg-dark": theme.background,
+    "--t-bg-light": theme.backgroundLight,
+    "--t-fg-dark": theme.foreground,
+    "--t-fg-light": theme.foregroundLight,
+    "--t-muted": theme.muted,
+    "--t-card": theme.card,
+    "--t-card-light": theme.cardLight,
+    "--t-card-border": theme.cardBorder,
   };
 
   return (
