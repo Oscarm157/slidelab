@@ -1,0 +1,197 @@
+/* ─────────────────────────────────────────────
+   Animaciones CSS reutilizables
+   Usa estas clases en cualquier slide o componente
+   ───────────────────────────────────────────── */
+
+/* Entrada de slide (escala + desplazamiento) */
+.slide-enter {
+  animation: slideEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animación escalonada para listas y grids */
+.stagger-in > * {
+  opacity: 0;
+  animation: staggerChild 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-in > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-in > *:nth-child(2) { animation-delay: 0.18s; }
+.stagger-in > *:nth-child(3) { animation-delay: 0.26s; }
+.stagger-in > *:nth-child(4) { animation-delay: 0.34s; }
+.stagger-in > *:nth-child(5) { animation-delay: 0.42s; }
+.stagger-in > *:nth-child(6) { animation-delay: 0.50s; }
+.stagger-in > *:nth-child(7) { animation-delay: 0.58s; }
+.stagger-in > *:nth-child(8) { animation-delay: 0.66s; }
+.stagger-in > *:nth-child(9) { animation-delay: 0.74s; }
+.stagger-in > *:nth-child(10) { animation-delay: 0.82s; }
+.stagger-in > *:nth-child(11) { animation-delay: 0.90s; }
+.stagger-in > *:nth-child(12) { animation-delay: 0.98s; }
+
+@keyframes staggerChild {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-in con delays progresivos (para heros y portadas) */
+.hero-fade-in {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease 0.1s forwards;
+}
+.hero-fade-in-delayed {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease 0.6s forwards;
+}
+.hero-fade-in-delayed-2 {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease 1.0s forwards;
+}
+.hero-fade-in-delayed-3 {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease 1.4s forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pop para números y métricas */
+.animate-number {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: countPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes countPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Crecimiento de barras (para gráficas y specs) */
+.bar-grow {
+  transform-origin: bottom;
+  animation: barGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Brillo sutil (para cards destacadas) */
+.glow-accent {
+  box-shadow: 0 0 60px color-mix(in srgb, var(--color-primary) 15%, transparent),
+              0 0 120px color-mix(in srgb, var(--color-primary) 5%, transparent);
+}
+
+/* Gradiente de texto con color accent */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 50%, color-mix(in srgb, var(--color-primary) 80%, black) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer (efecto de barrido brillante) */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-primary) 8%, transparent) 50%, transparent 100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Pulso para indicadores */
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Fade in sencillo */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide up sencillo */
+.slide-up {
+  opacity: 0;
+  animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accesibilidad: respeta la preferencia del usuario */
+@media (prefers-reduced-motion: reduce) {
+  .slide-enter,
+  .stagger-in > *,
+  .hero-fade-in,
+  .hero-fade-in-delayed,
+  .hero-fade-in-delayed-2,
+  .hero-fade-in-delayed-3,
+  .animate-number,
+  .bar-grow,
+  .shimmer::after,
+  .pulse-dot,
+  .fade-in,
+  .slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

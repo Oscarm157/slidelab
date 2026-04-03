@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "../styles/animations.css";
+
+/* ─────────────────────────────────────────────
+   Tema — conecta las CSS variables del config
+   con las utilidades de Tailwind 4
+   ───────────────────────────────────────────── */
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-bg-dark: var(--color-bg-dark);
+  --color-bg-light: var(--color-bg-light);
+  --color-fg-dark: var(--color-fg-dark);
+  --color-fg-light: var(--color-fg-light);
+  --color-muted: var(--color-muted);
+  --color-card: var(--color-card);
+  --color-card-light: var(--color-card-light);
+  --color-card-border: var(--color-card-border);
+
+  --font-display: var(--font-serif);
+  --font-body: var(--font-jakarta);
+  --font-mono: var(--font-dm-mono);
+}
+
+/* ─────────────────────────────────────────────
+   Estilos base
+   ───────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  overflow: hidden;
+  width: 100vw;
+  height: 100dvh;
+}
+
+/* Ocultar scrollbar pero permitir scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area para dispositivos con notch */
+.safe-area {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Íconos de Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+}
