@@ -1,59 +1,83 @@
+"use client";
+
 import { Slide } from "@/components/Slide";
-import { SectionHeader } from "@/components/SectionHeader";
-import { StatCard } from "@/components/StatCard";
+import { QuoteBlock } from "@/components/QuoteBlock";
 
 // ─────────────────────────────────────────────
-// Métricas — Datos que hablan por sí mismos
-// Muestra counters animados y gráfica Recharts
+// Producto — Specs + imagen en 2 columnas
+// Patrón: s05-producto de Central Ocho
 // ─────────────────────────────────────────────
 
-import { ChartWrapper } from "@/components/ChartWrapper";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+const statBars = [
+  { label: "Superficie habitable", value: "130 m²" },
+  { label: "Garage techado", value: "57 m²" },
+  { label: "Roof privado", value: "50 m²" },
+  { label: "Niveles", value: "3 + roof" },
+];
 
-const data = [
-  { trimestre: "Q1", actual: 120, anterior: 95 },
-  { trimestre: "Q2", actual: 145, anterior: 108 },
-  { trimestre: "Q3", actual: 162, anterior: 115 },
-  { trimestre: "Q4", actual: 198, anterior: 130 },
+const distribution = [
+  { level: "Planta baja", description: "Área social abierta y garage integrado. Espacios conectados, luminosidad natural." },
+  { level: "Niveles superiores", description: "Recámaras amplias con buena iluminación. Privacidad y confort." },
+  { level: "Roof", description: "Terraza privada con vista. Un espacio de convivencia que distingue al producto." },
 ];
 
 export function Slide03Product() {
   return (
     <Slide variant="dark">
-      <div className="slide-enter">
-        <SectionHeader
-          number="02"
-          title="Resultados del último año"
-          subtitle="Crecimiento trimestral comparado contra el periodo anterior."
-        />
+      <div className="stagger-in grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Columna izquierda — specs */}
+        <div className="flex flex-col justify-center">
+          <div className="mb-5">
+            <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
+            <div className="w-[60px] h-[2px] bg-primary mb-3" />
+            <p className="text-xs uppercase tracking-[0.25em] text-primary-light font-medium mb-1">
+              El Producto
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-fg-light">
+              Townhouse de 3 niveles + roof privado
+            </h2>
+          </div>
 
-        {/* Gráfica */}
-        <div className="mb-8">
-          <ChartWrapper height={280}>
-            <BarChart data={data} barGap={4}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#222" />
-              <XAxis dataKey="trimestre" stroke="#666" fontSize={12} />
-              <YAxis stroke="#666" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#141414",
-                  border: "1px solid #333",
-                  borderRadius: 8,
-                  fontSize: 13,
-                }}
-              />
-              <Bar dataKey="anterior" fill="#444" radius={[4, 4, 0, 0]} name="Anterior" />
-              <Bar dataKey="actual" fill="var(--color-primary)" radius={[4, 4, 0, 0]} name="Actual" />
-            </BarChart>
-          </ChartWrapper>
+          {/* Stat bars */}
+          <div className="space-y-2.5 mb-5">
+            {statBars.map((bar, i) => (
+              <div
+                key={bar.label}
+                className="flex items-center justify-between bg-card rounded-lg px-5 py-3"
+                style={{ animation: `staggerChild 0.5s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.08}s both` }}
+              >
+                <span className="text-muted text-sm">{bar.label}</span>
+                <span className="font-mono text-primary-light text-base font-medium">{bar.value}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Distribución */}
+          <div className="mb-5">
+            <h4 className="font-display text-base text-fg-light mb-2">Distribución inteligente</h4>
+            <div className="space-y-1">
+              {distribution.map((d) => (
+                <p key={d.level} className="text-sm text-muted">
+                  <span className="font-semibold text-fg-light">{d.level}:</span>{" "}
+                  {d.description}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <QuoteBlock
+            text="El producto que supera el estándar de mercado en su rango de precio."
+            variant="dark"
+          />
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger-in">
-          <StatCard value={198} suffix=" ud." label="Unidades Q4" />
-          <StatCard value={52} suffix="%" label="Crecimiento anual" />
-          <StatCard value={4.2} suffix="M" prefix="$" label="Facturación" decimals={1} />
-          <StatCard value={96} suffix="%" label="Retención clientes" />
+        {/* Columna derecha — imagen */}
+        <div className="rounded-2xl overflow-hidden bg-card shadow-2xl shadow-black/30 w-4/5 mx-auto lg:mx-0 mt-6 lg:mt-0">
+          <img
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+            alt="Render arquitectónico"
+            className="w-full h-auto block"
+          />
         </div>
       </div>
     </Slide>

@@ -21,13 +21,13 @@ export function StatCard({
   animate = true,
   variant = "dark",
 }: StatCardProps) {
-  const bg = variant === "dark"
-    ? "bg-card border-card-border"
-    : "bg-card-light border-card-border/30";
+  const styles = variant === "dark"
+    ? "bg-card border-card-border/50 shadow-lg shadow-black/20"
+    : "bg-white border-[#ddd] shadow-md shadow-black/5";
 
   return (
-    <div className={`rounded-xl border p-5 ${bg}`}>
-      <div className="font-mono text-2xl sm:text-3xl text-gradient mb-1">
+    <div className={`rounded-2xl border p-5 ${styles}`}>
+      <div className="font-mono text-3xl sm:text-4xl text-gradient mb-2 font-medium">
         {animate ? (
           <AnimatedCounter target={value} prefix={prefix} suffix={suffix} decimals={decimals} />
         ) : (
