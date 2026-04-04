@@ -149,41 +149,40 @@ export default function CustomizePage() {
     }));
   };
 
-  const generateConfig = () => {
-    return `export const deckConfig = {
-  title: "Mi Presentación",
-  subtitle: "Subtítulo aquí",
-  author: "Tu Nombre",
-  totalSlides: 6,
-  theme: {
-    primary: "${config.primary}",
-    primaryLight: "${config.primaryLight}",
-    background: "${config.bgDark}",
-    backgroundLight: "${config.bgLight}",
-    foreground: "${config.foreground}",
-    foregroundLight: "${config.foregroundLight}",
-    muted: "#5A5A5A",
-    card: "#141414",
-    cardLight: "#E8E0D6",
-    cardBorder: "#222222",
-  },
-  fonts: {
-    display: "var(--font-serif)",
-    body: "var(--font-jakarta)",
-    mono: "var(--font-dm-mono)",
-  },
-  navigation: {
-    showProgress: true,
-    showSlideCount: true,
-    enableKeyboard: true,
-    enableFullscreen: true,
-    enableTouch: true,
-  },
-};`;
+  const generatePrompt = () => {
+    const lines = [
+      `Actualiza la configuración de mi presentación con estos cambios:`,
+      ``,
+      `**Colores:**`,
+      `- Color principal: ${config.primary}`,
+      `- Color accent: ${config.primaryLight}`,
+      `- Fondo oscuro: ${config.bgDark}`,
+      `- Fondo claro: ${config.bgLight}`,
+      `- Texto sobre fondo claro: ${config.foreground}`,
+      `- Texto sobre fondo oscuro: ${config.foregroundLight}`,
+    ];
+
+    if (config.displayFont !== defaults.displayFont || config.bodyFont !== defaults.bodyFont || config.monoFont !== defaults.monoFont) {
+      lines.push(``);
+      lines.push(`**Tipografía:**`);
+      if (config.displayFont !== defaults.displayFont) lines.push(`- Títulos: ${config.displayFont}`);
+      if (config.bodyFont !== defaults.bodyFont) lines.push(`- Texto: ${config.bodyFont}`);
+      if (config.monoFont !== defaults.monoFont) lines.push(`- Números: ${config.monoFont}`);
+    }
+
+    if (config.logo) {
+      lines.push(``);
+      lines.push(`**Logo:** Ya subí mi logo en /public/images/logo.png, úsalo en la portada.`);
+    }
+
+    lines.push(``);
+    lines.push(`Aplica estos cambios en deck.config.ts y en layout.tsx si es necesario cambiar las tipografías.`);
+
+    return lines.join("\n");
   };
 
-  const copyConfig = () => {
-    navigator.clipboard.writeText(generateConfig());
+  const copyPrompt = () => {
+    navigator.clipboard.writeText(generatePrompt());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -363,23 +362,26 @@ export default function CustomizePage() {
             </div>
           </div>
 
-          {/* Config code */}
+          {/* Prompt para Claude Code */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <p className="text-xs text-fg-light/40 font-medium">deck.config.ts</p>
+              <div>
+                <p className="text-xs text-fg-light/40 font-medium">Instrucción para Claude Code</p>
+                <p className="text-[10px] text-fg-light/20 mt-0.5">Copia y pega esto en Claude Code dentro de tu proyecto</p>
+              </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={copyConfig}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
+                onClick={copyPrompt}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary text-white text-xs font-medium hover:bg-primary-light transition-colors shadow-[0_0_15px_rgba(139,105,20,0.25)]"
               >
                 <span className="material-symbols-outlined text-[16px]">{copied ? "check" : "content_copy"}</span>
-                {copied ? "Copiado" : "Copiar"}
+                {copied ? "¡Copiado!" : "Copiar instrucción"}
               </motion.button>
             </div>
             <div className="bg-[#0a0a0a] rounded-2xl p-5 overflow-x-auto">
-              <pre className="font-mono text-xs text-fg-light/60 leading-relaxed whitespace-pre">
-                {generateConfig()}
+              <pre className="text-sm text-fg-light/70 leading-relaxed whitespace-pre-wrap">
+                {generatePrompt()}
               </pre>
             </div>
           </div>
