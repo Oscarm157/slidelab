@@ -1,78 +1,57 @@
 "use client";
 
 import { Slide } from "@/components/Slide";
-import { FeatureCard } from "@/components/FeatureCard";
 import { StaggerReveal, StaggerItem } from "@/components/StaggerReveal";
+import { FeatureCard } from "@/components/FeatureCard";
 
 // ─────────────────────────────────────────────
-// Concepto — Número grande + pilares
+// Slide 2 — El problema: PowerPoint vs Web
 // ─────────────────────────────────────────────
-
-const pillars = [
-  {
-    icon: "water_drop",
-    title: "Captación pluvial",
-    description: "Sistema de recolección que cubre el 40% del consumo de agua de áreas comunes.",
-  },
-  {
-    icon: "air",
-    title: "Ventilación cruzada",
-    description: "Orientación norte-sur que reduce la necesidad de climatización artificial.",
-  },
-  {
-    icon: "park",
-    title: "Jardín central",
-    description: "360 m² de área verde compartida con especies nativas de bajo mantenimiento.",
-  },
-];
 
 export function Slide02Concept() {
   return (
     <Slide variant="light" className="bg-card-light">
       <StaggerReveal className="flex flex-col items-center text-center">
-        {/* Label */}
         <StaggerItem className="mb-4">
           <span className="font-mono text-sm text-fg-dark/20 block mb-2">02</span>
           <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-primary font-medium">
-            El Concepto
+            El problema
           </p>
         </StaggerItem>
 
-        {/* Número grande */}
-        <StaggerItem className="relative mb-2">
-          <span className="font-display text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] leading-none text-primary/10 select-none block">
-            12
-          </span>
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-fg-dark">
-              Residencial
-            </span>
-            <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary">
-              Pluvial
-            </span>
-          </div>
+        <StaggerItem className="relative mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg-dark max-w-2xl">
+            Tus ideas merecen más que un <span className="text-muted line-through">PowerPoint</span>
+          </h2>
         </StaggerItem>
 
-        <StaggerItem className="mb-8">
-          <p className="text-muted text-sm sm:text-base max-w-md">
-            Diseño bioclimático · 2,400 m² · Solo 12 unidades
+        <StaggerItem className="mb-10">
+          <p className="text-muted text-base sm:text-lg max-w-lg">
+            Slides estáticos, templates genéricos, diseño que no te representa. Pasas días armando algo que se ve igual que el de todos.
           </p>
         </StaggerItem>
 
-        {/* 3 pilares */}
-        <StaggerItem className="w-full mb-6">
+        <StaggerItem className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
-            {pillars.map((p) => (
-              <FeatureCard key={p.title} {...p} variant="light" />
-            ))}
+            <FeatureCard
+              icon="timer_off"
+              title="3 días de trabajo"
+              description="Para una presentación que se ve genérica y no refleja tu nivel."
+              variant="light"
+            />
+            <FeatureCard
+              icon="block"
+              title="Sin interactividad"
+              description="Nada de gráficas animadas, zoom en imágenes o navegación fluida."
+              variant="light"
+            />
+            <FeatureCard
+              icon="attach_money"
+              title="O pagas una agencia"
+              description="$2,000-$5,000 USD y 2 semanas para un deck profesional."
+              variant="light"
+            />
           </div>
-        </StaggerItem>
-
-        <StaggerItem>
-          <div className="w-10 h-[2px] bg-primary mx-auto mb-3" />
-          <p className="font-display text-sm sm:text-base text-muted italic max-w-xl">
-            &ldquo;Un proyecto donde la arquitectura responde al clima, no lo combate.&rdquo;
-          </p>
         </StaggerItem>
       </StaggerReveal>
     </Slide>
