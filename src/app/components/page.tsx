@@ -34,6 +34,15 @@ import { AgendaList } from "@/components/AgendaList";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { MapEmbed } from "@/components/MapEmbed";
 import { IconList } from "@/components/IconList";
+import { SectionHeader } from "@/components/SectionHeader";
+import { AudioPlayer } from "@/components/AudioPlayer";
+import { PDFEmbed } from "@/components/PDFEmbed";
+import { SpotifyEmbed } from "@/components/SpotifyEmbed";
+import { FigmaEmbed } from "@/components/FigmaEmbed";
+import { FormEmbed } from "@/components/FormEmbed";
+import { GoogleDocsEmbed } from "@/components/GoogleDocsEmbed";
+import { ImageCompare } from "@/components/ImageCompare";
+import { OrgChart } from "@/components/OrgChart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 // ─────────────────────────────────────────────
@@ -60,28 +69,22 @@ function Dual({ title, desc, dark, light, prompt }: {
 }) {
   const defaultPrompt = `Agrega un componente ${title} en mi slide. Usa variant="dark" o variant="light" según el fondo del slide.`;
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2">
-      {/* Dark side */}
-      <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
-        <div className="max-w-[560px] mx-auto">
-          <div className="mb-5 flex items-start justify-between gap-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
-              <p className="text-fg-light/30 text-xs">{desc}</p>
-            </div>
-            <CopyButton text={prompt ?? defaultPrompt} />
-          </div>
-          {dark}
+    <section>
+      {/* Título en barra separada */}
+      <div className="bg-[#111] px-6 sm:px-10 py-4 flex items-center justify-between border-t border-fg-light/5">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono">{title}</p>
+          <p className="text-fg-light/25 text-[11px] mt-0.5">{desc}</p>
         </div>
+        <CopyButton text={prompt ?? defaultPrompt} />
       </div>
-      {/* Light side */}
-      <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
-        <div className="max-w-[560px] mx-auto">
-          <div className="mb-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
-            <p className="text-fg-dark/30 text-xs">{desc}</p>
-          </div>
-          {light}
+      {/* Dark / Light split */}
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
+          <div className="max-w-[560px] mx-auto">{dark}</div>
+        </div>
+        <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
+          <div className="max-w-[560px] mx-auto">{light}</div>
         </div>
       </div>
     </section>
@@ -322,6 +325,65 @@ export default function ComponentsPage() {
       <Dual title="LogoCloud" desc="Grid de logos con grayscale hover."
         dark={<LogoCloud logos={[{ src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", alt: "Google" }, { src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", alt: "Amazon" }, { src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg", alt: "Microsoft" }]} columns={3} variant="dark" />}
         light={<LogoCloud logos={[{ src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", alt: "Google" }, { src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", alt: "Amazon" }, { src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg", alt: "Microsoft" }]} columns={3} grayscale={false} variant="light" />}
+      />
+
+      {/* ══════ ORIGINALES SIN DUAL ══════ */}
+
+      <Dual title="SectionHeader" desc="Encabezado de sección con número y línea."
+        dark={<SectionHeader number="01" title="Título de sección" subtitle="Subtítulo descriptivo." />}
+        light={<SectionHeader number="02" title="Otra sección" subtitle="Con subtítulo opcional." />}
+      />
+
+      <Dual title="AnimatedCounter" desc="Contador animado con easing cubic."
+        dark={<div className="flex items-end gap-8"><div><div className="text-gradient font-mono text-4xl sm:text-5xl font-medium"><AnimatedCounter target={15} suffix="%" /></div><p className="text-muted text-xs mt-1">Rendimiento</p></div><div><div className="text-gradient font-mono text-4xl sm:text-5xl font-medium"><AnimatedCounter target={8.4} prefix="$" suffix="M" decimals={1} /></div><p className="text-muted text-xs mt-1">Facturación</p></div></div>}
+        light={<div className="flex items-end gap-8"><div><div className="text-gradient font-mono text-4xl sm:text-5xl font-medium"><AnimatedCounter target={30} /></div><p className="text-muted text-xs mt-1">Meses</p></div><div><div className="text-gradient font-mono text-4xl sm:text-5xl font-medium"><AnimatedCounter target={55} /></div><p className="text-muted text-xs mt-1">Componentes</p></div></div>}
+      />
+
+      <Dual title="ImageZoom" desc="Lupa interactiva sobre imágenes."
+        dark={<ImageZoom src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Arquitectura" />}
+        light={<ImageZoom src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Interior" />}
+      />
+
+      <Dual title="OrgChart" desc="Organigrama jerárquico."
+        dark={<OrgChart root={{ name: "CEO", title: "Director General", children: [{ name: "VP Ops", title: "Operaciones" }, { name: "VP Comercial", title: "Ventas" }] }} variant="dark" />}
+        light={<OrgChart root={{ name: "CEO", title: "Director General", children: [{ name: "VP Ops", title: "Operaciones" }, { name: "VP Comercial", title: "Ventas" }] }} variant="light" />}
+      />
+
+      {/* ══════ EMBEDS Y MEDIA ══════ */}
+
+      <Dual title="AudioPlayer" desc="Reproductor de audio con controles custom." prompt="Agrega un AudioPlayer en mi slide. Necesito que reproduzca un archivo de audio con título, artista y cover art opcional."
+        dark={<AudioPlayer src="" title="Podcast: Innovación" artist="Slidelab FM" variant="dark" />}
+        light={<AudioPlayer src="" title="Entrevista: Arquitectura" artist="Canal Diseño" variant="light" />}
+      />
+
+      <Dual title="SpotifyEmbed" desc="Spotify track, album o playlist." prompt="Agrega un SpotifyEmbed con una playlist de Spotify. Pega la URL del track o playlist."
+        dark={<div className="bg-card/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">music_note</span><p className="text-fg-light/40 text-sm">Pega una URL de Spotify para ver el embed</p></div>}
+        light={<div className="bg-white/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">music_note</span><p className="text-fg-dark/40 text-sm">Pega una URL de Spotify para ver el embed</p></div>}
+      />
+
+      <Dual title="FigmaEmbed" desc="Archivo de Figma embebido." prompt="Agrega un FigmaEmbed con mi archivo de Figma. La URL es [pega tu URL de Figma aquí]."
+        dark={<div className="bg-card/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">design_services</span><p className="text-fg-light/40 text-sm">Pega una URL de Figma para ver el embed</p></div>}
+        light={<div className="bg-white/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">design_services</span><p className="text-fg-dark/40 text-sm">Pega una URL de Figma para ver el embed</p></div>}
+      />
+
+      <Dual title="PDFEmbed" desc="PDF embebido inline." prompt="Agrega un PDFEmbed para mostrar un documento PDF. El archivo está en /public/images/mi-documento.pdf."
+        dark={<PDFEmbed src="" title="Documento técnico" height={200} variant="dark" />}
+        light={<PDFEmbed src="" title="Propuesta comercial" height={200} variant="light" />}
+      />
+
+      <Dual title="FormEmbed" desc="Typeform, Tally o Google Forms." prompt="Agrega un FormEmbed con mi formulario de Tally/Typeform. La URL es [pega tu URL aquí]."
+        dark={<FormEmbed url="" title="Encuesta de satisfacción" height={200} variant="dark" />}
+        light={<FormEmbed url="" title="Registro al evento" height={200} variant="light" />}
+      />
+
+      <Dual title="GoogleDocsEmbed" desc="Google Docs, Sheets o Slides." prompt="Agrega un GoogleDocsEmbed para mostrar mi Google Sheet. La URL es [pega tu URL de sharing aquí]."
+        dark={<GoogleDocsEmbed url="" type="sheet" title="Proyecciones financieras" height={200} variant="dark" />}
+        light={<GoogleDocsEmbed url="" type="doc" title="Propuesta de proyecto" height={200} variant="light" />}
+      />
+
+      <Dual title="ImageCompare" desc="Antes/después con slider drag." prompt="Agrega un ImageCompare con dos imágenes para comparar antes y después. Las imágenes están en /public/images/antes.jpg y /public/images/despues.jpg."
+        dark={<ImageCompare before={{ src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80", label: "Antes" }} after={{ src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", label: "Después" }} height={250} />}
+        light={<ImageCompare before={{ src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", label: "Original" }} after={{ src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80", label: "Remodelado" }} height={250} />}
       />
 
       {/* Footer */}
