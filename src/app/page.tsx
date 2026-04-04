@@ -88,6 +88,7 @@ export default function HomePage() {
         <div className="flex items-center gap-5">
           <a href="/demo" className="text-fg-light/40 text-sm hover:text-fg-light transition-colors hidden sm:block">Demo</a>
           <a href="/components" className="text-fg-light/40 text-sm hover:text-fg-light transition-colors hidden sm:block">Componentes</a>
+          <a href="/customize" className="text-fg-light/40 text-sm hover:text-fg-light transition-colors hidden sm:block">Personalizar</a>
           <motion.a
             href="#waitlist"
             whileHover={{ scale: 1.02 }}
@@ -455,6 +456,7 @@ export default function HomePage() {
             <span className="font-display text-xl tracking-tight">Slidelab</span>
             <a href="/demo" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">Demo</a>
             <a href="/components" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">Componentes</a>
+            <a href="/customize" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">Personalizar</a>
             <a href="https://github.com/Oscarm157/slidelab" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">GitHub</a>
           </div>
           <p className="text-fg-light/20 text-xs">Hecho con Slidelab + Claude Code</p>
