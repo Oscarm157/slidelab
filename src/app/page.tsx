@@ -224,7 +224,7 @@ export default function HomePage() {
                 },
                 {
                   step: "02", icon: "dashboard_customize", title: "Construye",
-                  desc: "Usa los 44 componentes para armar cada slide. Dile a la IA qué quieres.",
+                  desc: "Usa los 55 componentes para armar cada slide. Dile a la IA qué quieres.",
                   code: "<PricingTable tiers={...} />",
                 },
                 {
@@ -323,7 +323,7 @@ export default function HomePage() {
           <motion.div {...reveal} className="text-center mb-16">
             <p className="font-mono text-[11px] tracking-[0.4em] text-primary uppercase mb-4">Librería</p>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl tracking-tight mb-3">
-              44 componentes listos
+              55 componentes listos
             </h2>
             <p className="text-fg-light/40 text-base max-w-md mx-auto">
               Gráficas, timelines, pricing, team grids, mapas, comparativas. Elige y combina.

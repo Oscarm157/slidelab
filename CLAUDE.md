@@ -21,7 +21,7 @@ src/
 │   ├── layout.tsx           → Root layout, carga fonts e inyecta CSS vars
 │   ├── page.tsx             → Ensambla los slides en SlideLayout
 │   └── globals.css          → Tailwind + tema + estilos base
-├── components/              → 44 componentes reutilizables
+├── components/              → 55 componentes reutilizables
 │   ├── **Infraestructura:** SlideLayout, Slide, SlideNavigation, ProgressBar, FullscreenToggle
 │   ├── **Encabezados:** SectionHeader
 │   ├── **Cards:** FeatureCard, StatCard, ValueCard, CaseStudyCard, TestimonialCard, SpeakerCard

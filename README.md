@@ -26,7 +26,7 @@ Abre [http://localhost:3000](http://localhost:3000) para ver tu presentación.
 
 - **Navegación completa** — Flechas del teclado, swipe en móvil, pantalla completa (tecla F)
 - **6 slides de ejemplo** — Portada, concepto, métricas, timeline, producto, contacto
-- **44 componentes** — Cards, métricas, gráficas, timelines, pricing, team grids, org charts, funnels, maps, y más
+- **55 componentes** — Cards, métricas, gráficas, timelines, pricing, team grids, org charts, funnels, maps, y más
 - **motion.dev integrado** — Transiciones spring entre slides, hover elevation, stagger reveals
 - **Animaciones CSS** — Fade-ins, counters animados, shimmer, glow
 - **Tema configurable** — Un solo archivo para cambiar colores, tipografía y comportamiento

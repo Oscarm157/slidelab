@@ -157,7 +157,7 @@ export default function ComponentsPage() {
               </div>
             </StaggerItem>
             <StaggerItem><h1 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4">Componentes</h1></StaggerItem>
-            <StaggerItem><p className="text-fg-light/40 text-lg max-w-xl">44 componentes en dark y light. Cada uno listo para usar en tu presentación.</p></StaggerItem>
+            <StaggerItem><p className="text-fg-light/40 text-lg max-w-xl">55 componentes en dark y light. Cada uno listo para usar en tu presentación.</p></StaggerItem>
           </StaggerReveal>
         </div>
       </section>
@@ -315,7 +315,7 @@ export default function ComponentsPage() {
             <a href="/customize" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">Personalizar</a>
             <a href="/demo" className="text-fg-light/30 text-sm hover:text-fg-light/60 transition-colors">Demo</a>
           </div>
-          <span className="font-mono text-xs text-fg-light/20">44 componentes · Slidelab</span>
+          <span className="font-mono text-xs text-fg-light/20">55 componentes · Slidelab</span>
         </div>
       </section>
     </div>
