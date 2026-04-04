@@ -15,6 +15,8 @@ interface BrandConfig {
   primaryLight: string;
   bgDark: string;
   bgLight: string;
+  foreground: string;
+  foregroundLight: string;
   displayFont: string;
   bodyFont: string;
   monoFont: string;
@@ -26,6 +28,8 @@ const defaults: BrandConfig = {
   primaryLight: "#A67C00",
   bgDark: "#0a0a0a",
   bgLight: "#F5F0EB",
+  foreground: "#1a1a1a",
+  foregroundLight: "#F5F5F5",
   displayFont: "DM Serif Display",
   bodyFont: "Plus Jakarta Sans",
   monoFont: "DM Mono",
@@ -108,6 +112,8 @@ export default function CustomizePage() {
       html.style.setProperty("--t-primary-light", config.primaryLight);
       html.style.setProperty("--t-bg-dark", config.bgDark);
       html.style.setProperty("--t-bg-light", config.bgLight);
+      html.style.setProperty("--t-fg-dark", config.foreground);
+      html.style.setProperty("--t-fg-light", config.foregroundLight);
     }
   }, [config]);
 
@@ -138,6 +144,8 @@ export default function CustomizePage() {
       primaryLight: palette.primaryLight,
       bgDark: palette.bgDark,
       bgLight: palette.bgLight,
+      foreground: palette.foreground,
+      foregroundLight: palette.foregroundLight,
     }));
   };
 
@@ -152,8 +160,8 @@ export default function CustomizePage() {
     primaryLight: "${config.primaryLight}",
     background: "${config.bgDark}",
     backgroundLight: "${config.bgLight}",
-    foreground: "#1a1a1a",
-    foregroundLight: "#F5F5F5",
+    foreground: "${config.foreground}",
+    foregroundLight: "${config.foregroundLight}",
     muted: "#5A5A5A",
     card: "#141414",
     cardLight: "#E8E0D6",
@@ -274,6 +282,8 @@ export default function CustomizePage() {
               <ColorPicker label="Primary Light" value={config.primaryLight} onChange={(v) => update("primaryLight", v)} />
               <ColorPicker label="Fondo oscuro" value={config.bgDark} onChange={(v) => update("bgDark", v)} />
               <ColorPicker label="Fondo claro" value={config.bgLight} onChange={(v) => update("bgLight", v)} />
+              <ColorPicker label="Texto (sobre claro)" value={config.foreground} onChange={(v) => update("foreground", v)} />
+              <ColorPicker label="Texto (sobre oscuro)" value={config.foregroundLight} onChange={(v) => update("foregroundLight", v)} />
             </div>
           </div>
 
@@ -330,9 +340,26 @@ export default function CustomizePage() {
           <div>
             <p className="text-xs text-fg-light/40 mb-3 font-medium">Tu paleta</p>
             <div className="flex gap-2">
-              {[config.primary, config.primaryLight, config.bgDark, config.bgLight].map((c, i) => (
-                <div key={i} className="flex-1 h-12 rounded-xl shadow-inner" style={{ backgroundColor: c }} />
+              {[
+                { color: config.primary, label: "Primary" },
+                { color: config.primaryLight, label: "Accent" },
+                { color: config.bgDark, label: "Oscuro" },
+                { color: config.bgLight, label: "Claro" },
+              ].map((c, i) => (
+                <div key={i} className="flex-1">
+                  <div className="h-10 rounded-xl shadow-inner" style={{ backgroundColor: c.color }} />
+                  <p className="text-[9px] text-fg-light/30 font-mono text-center mt-1">{c.label}</p>
+                </div>
               ))}
+            </div>
+            {/* Preview de contraste */}
+            <div className="grid grid-cols-2 gap-2 mt-3">
+              <div className="rounded-xl p-3 text-center" style={{ backgroundColor: config.bgDark }}>
+                <span className="text-xs font-medium" style={{ color: config.foregroundLight }}>Texto sobre oscuro</span>
+              </div>
+              <div className="rounded-xl p-3 text-center" style={{ backgroundColor: config.bgLight }}>
+                <span className="text-xs font-medium" style={{ color: config.foreground }}>Texto sobre claro</span>
+              </div>
             </div>
           </div>
 
