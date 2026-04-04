@@ -178,8 +178,8 @@ const matrixCells = [
 export default function ComponentsPage() {
   return (
     <div className="w-full min-h-screen overflow-y-auto">
-      {/* Hero */}
-      <section className="bg-bg-dark text-fg-light px-6 sm:px-10 py-20 sm:py-28">
+      {/* Hero — fondo distinto para que no se confunda con dark side */}
+      <section className="bg-[#14120e] text-fg-light px-6 sm:px-10 py-16 sm:py-20 border-b border-primary/10">
         <div className="max-w-6xl mx-auto">
           <StaggerReveal>
             <StaggerItem>
