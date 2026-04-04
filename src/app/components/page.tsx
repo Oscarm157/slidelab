@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { FeatureCard } from "@/components/FeatureCard";
 import { StatCard } from "@/components/StatCard";
 import { QuoteBlock } from "@/components/QuoteBlock";
@@ -39,17 +40,36 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 // Catálogo — cada componente en dark Y light
 // ─────────────────────────────────────────────
 
-function Dual({ title, desc, dark, light }: {
-  title: string; desc: string; dark: React.ReactNode; light: React.ReactNode;
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <button onClick={copy} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-[10px] font-medium hover:bg-primary/20 transition-colors">
+      <span className="material-symbols-outlined text-[12px]">{copied ? "check" : "content_copy"}</span>
+      {copied ? "Copiado" : "Usar"}
+    </button>
+  );
+}
+
+function Dual({ title, desc, dark, light, prompt }: {
+  title: string; desc: string; dark: React.ReactNode; light: React.ReactNode; prompt?: string;
 }) {
+  const defaultPrompt = `Agrega un componente ${title} en mi slide. Usa variant="dark" o variant="light" según el fondo del slide.`;
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2">
       {/* Dark side */}
       <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
         <div className="max-w-[560px] mx-auto">
-          <div className="mb-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
-            <p className="text-fg-light/30 text-xs">{desc}</p>
+          <div className="mb-5 flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
+              <p className="text-fg-light/30 text-xs">{desc}</p>
+            </div>
+            <CopyButton text={prompt ?? defaultPrompt} />
           </div>
           {dark}
         </div>
@@ -164,7 +184,7 @@ export default function ComponentsPage() {
 
       {/* ══════ COMPONENTES EN DUAL ══════ */}
 
-      <Dual title="FeatureCard" desc="Card con ícono, título y descripción."
+      <Dual title="FeatureCard" desc="Card con ícono, título y descripción." prompt="Agrega 3 FeatureCards en un grid de 3 columnas. Cada card debe tener un ícono de Material Symbols, un título y una descripción corta. Usa variant='light' si el slide tiene fondo claro."
         dark={<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">{features3.map(f => <FeatureCard key={f.title} {...f} variant="dark" />)}</div>}
         light={<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">{features3.map(f => <FeatureCard key={f.title} {...f} variant="light" />)}</div>}
       />
@@ -179,12 +199,12 @@ export default function ComponentsPage() {
         light={<QuoteBlock text="El producto supera el estándar de mercado." variant="light" />}
       />
 
-      <Dual title="KPIRow" desc="Strip horizontal de métricas con trends."
+      <Dual title="KPIRow" desc="Strip horizontal de métricas con trends." prompt="Agrega un KPIRow con 4 métricas clave. Cada una con valor numérico, label, ícono y porcentaje de cambio (positivo o negativo). Los números deben animarse al entrar."
         dark={<KPIRow items={kpiItems} variant="dark" />}
         light={<KPIRow items={kpiItems} variant="light" />}
       />
 
-      <Dual title="DataCallout" desc="Métrica gigante hero con glow."
+      <Dual title="DataCallout" desc="Métrica gigante hero con glow." prompt="Agrega un DataCallout con el número principal de mi presentación. Debe ser un número grande con animación, un label descriptivo y un contexto comparativo (ej: 'vs año anterior')."
         dark={<DataCallout value={8.4} prefix="$" suffix="M" decimals={1} label="Facturación" context="vs $5.1M anterior" icon="trending_up" variant="dark" />}
         light={<DataCallout value={15} suffix="%" label="Rendimiento anual" context="Últimos 12 meses" icon="payments" variant="light" />}
       />
@@ -194,12 +214,12 @@ export default function ComponentsPage() {
         light={<div className="grid grid-cols-2 gap-3"><MetricDelta label="Costo/lead" from={45} to={28} prefix="$" variant="light" /><MetricDelta label="NPS" from={58} to={72} variant="light" /></div>}
       />
 
-      <Dual title="ComparisonTable" desc="Tabla comparativa side-by-side."
+      <Dual title="ComparisonTable" desc="Tabla comparativa side-by-side." prompt="Agrega una ComparisonTable comparando 3 opciones con 5 características. La columna del medio debe estar highlighted. Usa checkmarks (true/false) y valores de texto."
         dark={<ComparisonTable columns={compCols} rows={compRows} variant="dark" />}
         light={<ComparisonTable columns={compCols} rows={compRows} variant="light" />}
       />
 
-      <Dual title="PricingTable" desc="Cards de precios con plan destacado."
+      <Dual title="PricingTable" desc="Cards de precios con plan destacado." prompt="Agrega una PricingTable con 3 planes: Básico ($29/mes), Pro ($79/mes, highlighted) y Enterprise ($199/mes). Cada plan con 4-5 features y un botón CTA. El plan Pro debe tener highlighted=true."
         dark={<PricingTable tiers={priceTiers} variant="dark" />}
         light={<PricingTable tiers={priceTiers} variant="light" />}
       />
@@ -214,7 +234,7 @@ export default function ComponentsPage() {
         light={<ProcessFlow steps={processSteps} variant="light" />}
       />
 
-      <Dual title="FunnelChart" desc="Embudo de conversión animado."
+      <Dual title="FunnelChart" desc="Embudo de conversión animado." prompt="Agrega un FunnelChart mostrando el embudo de conversión: Visitantes (10,000) → Leads (3,200) → Oportunidades (850) → Clientes (210). Las barras deben animarse al hacer scroll."
         dark={<FunnelChart stages={funnelStages} variant="dark" />}
         light={<FunnelChart stages={funnelStages} variant="light" />}
       />
@@ -229,7 +249,7 @@ export default function ComponentsPage() {
         light={<MatrixGrid cells={matrixCells} axisLabels={{ top: "Alto impacto", bottom: "Bajo impacto" }} variant="light" />}
       />
 
-      <Dual title="TeamGrid" desc="Grid de equipo con fotos y roles."
+      <Dual title="TeamGrid" desc="Grid de equipo con fotos y roles." prompt="Agrega un TeamGrid con los miembros del equipo. Necesito nombre, rol, foto (usa imágenes de Unsplash) y una bio corta de cada persona. 3 columnas."
         dark={<TeamGrid members={teamMembers} variant="dark" />}
         light={<TeamGrid members={teamMembers} variant="light" />}
       />
@@ -294,7 +314,7 @@ export default function ComponentsPage() {
         light={<StepByStep steps={[{ title: "Construye", description: "Arma tus slides.", icon: "dashboard" }, { title: "Despliega", description: "Un comando.", icon: "cloud_upload" }]} variant="light" />}
       />
 
-      <Dual title="MapEmbed" desc="Mapa con overlay de información."
+      <Dual title="MapEmbed" desc="Mapa con overlay de información." prompt="Agrega un MapEmbed con la ubicación de mi proyecto. Incluye la dirección, detalles de acceso, y un grid de proximidad con 6 puntos de interés cercanos y su tiempo de llegada."
         dark={<MapEmbed address="Av. Principal 420" details={["A 5 min del centro"]} proximity={[{ place: "Centro", time: "5 min" }, { place: "Aeropuerto", time: "18 min" }]} variant="dark" />}
         light={<MapEmbed address="Av. Principal 420" details={["A 5 min del centro"]} proximity={[{ place: "Centro", time: "5 min" }, { place: "Aeropuerto", time: "18 min" }]} variant="light" />}
       />
