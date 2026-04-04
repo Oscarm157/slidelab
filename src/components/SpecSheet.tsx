@@ -3,6 +3,7 @@ interface SpecItem {
   value: string;
   icon?: string;
   highlight?: boolean;
+  progress?: number; // 0-100, barra visual proporcional
 }
 
 interface SpecSheetProps {
@@ -19,7 +20,7 @@ export function SpecSheet({ title, specs, columns = 1, variant = "light" }: Spec
   const renderSpec = (spec: SpecItem, i: number) => (
     <div
       key={spec.label}
-      className={`flex items-center justify-between rounded-lg px-5 py-3 ${
+      className={`relative flex items-center justify-between rounded-lg px-5 py-3 overflow-hidden ${
         spec.highlight ? highlightBg : i % 2 === 0 ? stripBg : ""
       }`}
       style={{ animation: `staggerChild 0.5s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.06}s both` }}
@@ -29,6 +30,11 @@ export function SpecSheet({ title, specs, columns = 1, variant = "light" }: Spec
         {spec.label}
       </span>
       <span className="font-mono text-primary text-sm font-medium">{spec.value}</span>
+      {spec.progress !== undefined && (
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary/10">
+          <div className="h-full bg-primary/40 rounded-full transition-all duration-700" style={{ width: `${spec.progress}%` }} />
+        </div>
+      )}
     </div>
   );
 

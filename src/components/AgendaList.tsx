@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "motion/react";
+
 interface AgendaItem {
   time: string;
   title: string;
@@ -23,8 +27,10 @@ export function AgendaList({ items, variant = "light" }: AgendaListProps) {
 
       <div className="space-y-1">
         {items.map((item, i) => (
-          <div
+          <motion.div
             key={i}
+            whileHover={{ backgroundColor: variant === "dark" ? "rgba(139,105,20,0.05)" : "rgba(139,105,20,0.03)", x: 4 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className={`relative rounded-xl px-5 py-4 ${i % 2 === 0 ? stripBg : ""}`}
             style={{ animation: `staggerChild 0.5s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.06}s both` }}
           >
@@ -60,7 +66,7 @@ export function AgendaList({ items, variant = "light" }: AgendaListProps) {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

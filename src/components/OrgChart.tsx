@@ -18,7 +18,7 @@ function OrgNodeCard({ node, variant, isRoot }: { node: OrgNode; variant: string
   return (
     <div className="flex flex-col items-center">
       {/* Node */}
-      <div className={`rounded-2xl px-5 py-4 text-center ${styles} ${isRoot ? "ring-2 ring-primary/30" : ""}`}>
+      <div className={`rounded-2xl px-5 py-4 text-center transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(139,105,20,0.15)] ${styles} ${isRoot ? "ring-2 ring-primary/30" : ""}`}>
         {node.photo && (
           <img src={node.photo} alt={node.name} className="w-10 h-10 rounded-full object-cover mx-auto mb-2" />
         )}

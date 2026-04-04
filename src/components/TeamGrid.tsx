@@ -32,10 +32,12 @@ export function TeamGrid({ members, columns = 3, variant = "light" }: TeamGridPr
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
           className={`rounded-2xl p-6 text-center ${cardStyles}`}
         >
-          <img
+          <motion.img
             src={member.photo}
             alt={member.name}
-            className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
+            className="w-20 h-20 rounded-full object-cover mx-auto mb-4 ring-2 ring-transparent hover:ring-primary/50 transition-all duration-300"
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           />
           <h3 className="font-semibold text-base">{member.name}</h3>
           <p className="text-primary text-sm mb-2">{member.role}</p>

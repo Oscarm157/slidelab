@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "motion/react";
+
 interface ComparisonTableProps {
   columns: { label: string; highlighted?: boolean }[];
   rows: { feature: string; values: (string | boolean)[] }[];
@@ -36,7 +38,13 @@ export function ComparisonTable({ columns, rows, variant = "light" }: Comparison
         {/* Rows */}
         <tbody>
           {rows.map((row, ri) => (
-            <tr key={row.feature}>
+            <motion.tr
+              key={row.feature}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 300, damping: 24, delay: ri * 0.04 }}
+            >
               <td className={`px-5 py-3.5 text-sm ${ri % 2 === 0 ? rowBg : ""}`}>
                 {row.feature}
               </td>
@@ -56,7 +64,7 @@ export function ComparisonTable({ columns, rows, variant = "light" }: Comparison
                   )}
                 </td>
               ))}
-            </tr>
+            </motion.tr>
           ))}
         </tbody>
       </table>

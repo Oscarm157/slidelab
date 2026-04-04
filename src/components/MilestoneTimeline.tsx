@@ -27,13 +27,19 @@ export function MilestoneTimeline({ milestones, variant = "light" }: MilestoneTi
           return (
             <div key={i} className="relative">
               {/* Nodo en el rail */}
-              <div className={`absolute -left-8 sm:-left-10 top-4 w-5 h-5 rounded-full border-2 ${
+              <div className={`absolute -left-8 sm:-left-10 top-4 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                 status === "completed" ? "bg-primary border-primary" :
-                status === "current" ? "bg-primary border-primary pulse-dot" :
+                status === "current" ? "bg-primary border-primary" :
                 "bg-transparent border-primary/40"
               }`}>
                 {status === "completed" && (
-                  <span className="material-symbols-outlined text-white text-[12px] flex items-center justify-center h-full">check</span>
+                  <span className="material-symbols-outlined text-white text-[12px]">check</span>
+                )}
+                {status === "current" && (
+                  <>
+                    <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-25" />
+                    <span className="w-2 h-2 rounded-full bg-white relative z-10" />
+                  </>
                 )}
               </div>
 

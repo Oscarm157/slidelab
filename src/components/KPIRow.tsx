@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { AnimatedCounter } from "./AnimatedCounter";
 
 interface KPIItem {
@@ -24,10 +25,17 @@ export function KPIRow({ items, variant = "light" }: KPIRowProps) {
 
   return (
     <div className={`rounded-2xl ${bg} flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-primary/10`}>
-      {items.map((item) => {
+      {items.map((item, idx) => {
         const isPositive = (item.change ?? 0) >= 0;
         return (
-          <div key={item.label} className="flex-1 px-5 sm:px-6 py-5 text-center">
+          <motion.div
+            key={item.label}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 300, damping: 24, delay: idx * 0.08 }}
+            className="flex-1 px-5 sm:px-6 py-5 text-center"
+          >
             {item.icon && (
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-2">
                 <span className="material-symbols-outlined text-primary text-[18px]">{item.icon}</span>
@@ -54,7 +62,7 @@ export function KPIRow({ items, variant = "light" }: KPIRowProps) {
                 {isPositive ? "+" : ""}{item.change}%
               </span>
             )}
-          </div>
+          </motion.div>
         );
       })}
     </div>

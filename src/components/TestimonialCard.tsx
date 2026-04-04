@@ -24,10 +24,16 @@ export function TestimonialCard({
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       className={`rounded-2xl p-6 relative ${styles}`}
     >
-      {/* Comilla decorativa */}
-      <span className="absolute top-4 right-6 font-display text-6xl text-primary/10 leading-none select-none">
+      {/* Comilla decorativa animada */}
+      <motion.span
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.2 }}
+        className="absolute top-4 right-6 font-display text-6xl text-primary/10 leading-none select-none"
+      >
         &ldquo;
-      </span>
+      </motion.span>
 
       <p className="font-display text-base sm:text-lg italic leading-relaxed mb-5 relative">
         &ldquo;{quote}&rdquo;

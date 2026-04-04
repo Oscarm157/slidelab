@@ -39,9 +39,19 @@ export function PricingTable({ tiers, variant = "light" }: PricingTableProps) {
               isHighlighted ? "sm:-mt-4 relative" : ""
             }`}
           >
-            {/* Accent bar en plan destacado */}
+            {/* Accent bar + badge en plan destacado */}
             {isHighlighted && (
-              <div className="absolute top-0 left-6 right-6 h-1 bg-primary rounded-b-full" />
+              <>
+                <div className="absolute top-0 left-6 right-6 h-1 bg-primary rounded-b-full" />
+                <motion.div
+                  initial={{ scale: 0, y: 10 }}
+                  animate={{ scale: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.3 }}
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-white text-[11px] font-medium shadow-[0_0_15px_rgba(139,105,20,0.3)]"
+                >
+                  Recomendado
+                </motion.div>
+              </>
             )}
 
             <p className={`font-display text-lg mb-1 ${isHighlighted ? "text-primary" : ""}`}>
