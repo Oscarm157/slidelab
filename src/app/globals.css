@@ -29,9 +29,8 @@
 
 body {
   font-family: var(--font-body);
-  overflow: hidden;
   width: 100vw;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 /* Textura de ruido sutil (como Central Ocho) */
