@@ -43,6 +43,10 @@ import { FormEmbed } from "@/components/FormEmbed";
 import { GoogleDocsEmbed } from "@/components/GoogleDocsEmbed";
 import { ImageCompare } from "@/components/ImageCompare";
 import { OrgChart } from "@/components/OrgChart";
+import { CalendlyEmbed } from "@/components/CalendlyEmbed";
+import { FloorPlanViewer } from "@/components/FloorPlanViewer";
+import { MiniChart } from "@/components/MiniChart";
+import { SocialEmbed } from "@/components/SocialEmbed";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 // ─────────────────────────────────────────────
@@ -69,22 +73,28 @@ function Dual({ title, desc, dark, light, prompt }: {
 }) {
   const defaultPrompt = `Agrega un componente ${title} en mi slide. Usa variant="dark" o variant="light" según el fondo del slide.`;
   return (
-    <section>
-      {/* Título en barra separada */}
-      <div className="bg-[#111] px-6 sm:px-10 py-4 flex items-center justify-between border-t border-fg-light/5">
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono">{title}</p>
-          <p className="text-fg-light/25 text-[11px] mt-0.5">{desc}</p>
+    <section className="grid grid-cols-1 lg:grid-cols-2">
+      {/* Dark side */}
+      <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
+        <div className="max-w-[560px] mx-auto">
+          <div className="mb-5 flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-0.5">{title}</p>
+              <p className="text-fg-light/25 text-[11px]">{desc}</p>
+            </div>
+            <CopyButton text={prompt ?? defaultPrompt} />
+          </div>
+          {dark}
         </div>
-        <CopyButton text={prompt ?? defaultPrompt} />
       </div>
-      {/* Dark / Light split */}
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
-          <div className="max-w-[560px] mx-auto">{dark}</div>
-        </div>
-        <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
-          <div className="max-w-[560px] mx-auto">{light}</div>
+      {/* Light side */}
+      <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
+        <div className="max-w-[560px] mx-auto">
+          <div className="mb-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-0.5">{title}</p>
+            <p className="text-fg-dark/25 text-[11px]">{desc}</p>
+          </div>
+          {light}
         </div>
       </div>
     </section>
@@ -379,6 +389,26 @@ export default function ComponentsPage() {
       <Dual title="GoogleDocsEmbed" desc="Google Docs, Sheets o Slides." prompt="Agrega un GoogleDocsEmbed para mostrar mi Google Sheet. La URL es [pega tu URL de sharing aquí]."
         dark={<GoogleDocsEmbed url="" type="sheet" title="Proyecciones financieras" height={200} variant="dark" />}
         light={<GoogleDocsEmbed url="" type="doc" title="Propuesta de proyecto" height={200} variant="light" />}
+      />
+
+      <Dual title="MiniChart" desc="Chart compacto embebible (sparkline, donut, bar)."
+        dark={<div className="grid grid-cols-3 gap-4"><div className="bg-card/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Sparkline</p><MiniChart type="sparkline" data={[20,35,28,45,42,60,55,70]} height={60} /></div><div className="bg-card/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Donut</p><MiniChart type="donut" data={[65,20,15]} height={60} /></div><div className="bg-card/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Bar</p><MiniChart type="bar" data={[30,50,40,70,55]} height={60} /></div></div>}
+        light={<div className="grid grid-cols-3 gap-4"><div className="bg-white/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Sparkline</p><MiniChart type="sparkline" data={[20,35,28,45,42,60,55,70]} height={60} /></div><div className="bg-white/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Donut</p><MiniChart type="donut" data={[65,20,15]} height={60} /></div><div className="bg-white/60 rounded-xl p-4"><p className="text-muted text-[10px] mb-2">Bar</p><MiniChart type="bar" data={[30,50,40,70,55]} height={60} /></div></div>}
+      />
+
+      <Dual title="FloorPlanViewer" desc="Imagen con hotspots interactivos." prompt="Agrega un FloorPlanViewer con mi plano arquitectónico. La imagen está en /public/images/plano.png. Agrega 3-4 hotspots con coordenadas, labels y descripciones."
+        dark={<FloorPlanViewer image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Plano" hotspots={[{x:25,y:30,label:"Sala",description:"45 m²",icon:"living"},{x:65,y:50,label:"Cocina",description:"Isla central",icon:"kitchen"}]} variant="dark" />}
+        light={<FloorPlanViewer image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Plano" hotspots={[{x:25,y:30,label:"Sala",description:"45 m²",icon:"living"},{x:65,y:50,label:"Cocina",description:"Isla central",icon:"kitchen"}]} variant="light" />}
+      />
+
+      <Dual title="CalendlyEmbed" desc="Widget de agendar reuniones." prompt="Agrega un CalendlyEmbed para que los visitantes agenden una reunión. Mi URL de Calendly es [tu URL aquí]."
+        dark={<CalendlyEmbed url="" height={200} variant="dark" />}
+        light={<CalendlyEmbed url="" height={200} variant="light" />}
+      />
+
+      <Dual title="SocialEmbed" desc="Posts de Twitter, Instagram, LinkedIn." prompt="Agrega un SocialEmbed con un post de Twitter/X. La URL del tweet es [pega URL aquí]."
+        dark={<div className="bg-card/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">share</span><p className="text-fg-light/40 text-sm">Pega una URL de Twitter, Instagram o LinkedIn</p></div>}
+        light={<div className="bg-white/60 rounded-2xl p-6 text-center"><span className="material-symbols-outlined text-primary text-[36px] mb-2 block">share</span><p className="text-fg-dark/40 text-sm">Pega una URL de Twitter, Instagram o LinkedIn</p></div>}
       />
 
       <Dual title="ImageCompare" desc="Antes/después con slider drag." prompt="Agrega un ImageCompare con dos imágenes para comparar antes y después. Las imágenes están en /public/images/antes.jpg y /public/images/despues.jpg."
