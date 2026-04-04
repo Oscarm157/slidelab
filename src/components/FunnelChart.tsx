@@ -23,9 +23,12 @@ export function FunnelChart({ stages, variant = "light" }: FunnelChartProps) {
 
   return (
     <div className={`rounded-2xl p-6 sm:p-8 ${bgSurface}`}>
-      <div className="space-y-0 max-w-2xl mx-auto">
+      <div className="space-y-0 max-w-3xl mx-auto">
         {stages.map((stage, i) => {
-          const widthPercent = (stage.value / maxValue) * 100;
+          // Escala logarítmica para que las diferencias grandes se vean proporcionadas
+          // sin que las barras chicas colapsen a nada
+          const ratio = stage.value / maxValue;
+          const widthPercent = Math.max(20, (Math.log(ratio * 99 + 1) / Math.log(100)) * 100);
           const conversionRate = i > 0 ? ((stage.value / stages[i - 1].value) * 100).toFixed(0) : null;
           const paddingY = 16 - i * 2; // Decreasing height
 
@@ -51,7 +54,7 @@ export function FunnelChart({ stages, variant = "light" }: FunnelChartProps) {
                   whileInView={{ width: `${widthPercent}%`, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.1 }}
-                  className="flex items-center justify-between rounded-xl overflow-hidden min-w-[180px]"
+                  className="flex items-center justify-between rounded-xl overflow-hidden"
                   style={{
                     paddingTop: paddingY,
                     paddingBottom: paddingY,
