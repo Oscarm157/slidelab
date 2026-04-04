@@ -43,25 +43,25 @@ function Dual({ title, desc, dark, light }: {
   title: string; desc: string; dark: React.ReactNode; light: React.ReactNode;
 }) {
   return (
-    <section>
-      <div className="bg-bg-dark px-6 sm:px-10 pt-10 pb-4">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
-          <p className="text-fg-light/40 text-sm">{desc}</p>
+    <section className="grid grid-cols-1 lg:grid-cols-2">
+      {/* Dark side */}
+      <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
+        <div className="max-w-[560px] mx-auto">
+          <div className="mb-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
+            <p className="text-fg-light/30 text-xs">{desc}</p>
+          </div>
+          {dark}
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="bg-bg-dark text-fg-light px-6 sm:px-10 py-8">
-          <div className="max-w-[560px] mx-auto">
-            <span className="text-[10px] font-mono text-fg-light/20 uppercase tracking-widest block mb-4">Dark</span>
-            {dark}
+      {/* Light side */}
+      <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
+        <div className="max-w-[560px] mx-auto">
+          <div className="mb-5">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary font-mono mb-1">{title}</p>
+            <p className="text-fg-dark/30 text-xs">{desc}</p>
           </div>
-        </div>
-        <div className="bg-bg-light text-fg-dark px-6 sm:px-10 py-8">
-          <div className="max-w-[560px] mx-auto">
-            <span className="text-[10px] font-mono text-fg-dark/20 uppercase tracking-widest block mb-4">Light</span>
-            {light}
-          </div>
+          {light}
         </div>
       </div>
     </section>
