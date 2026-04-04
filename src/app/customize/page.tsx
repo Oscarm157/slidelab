@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
+import { extractColors } from "./extract-colors";
+import { generatePalettes, type Palette } from "./generate-palettes";
 
 // ─────────────────────────────────────────────
 // Brand Customizer — personaliza tu presentación
@@ -81,6 +83,8 @@ function FontSelect({ label, value, options, onChange }: { label: string; value:
 export default function CustomizePage() {
   const [config, setConfig] = useState<BrandConfig>(defaults);
   const [copied, setCopied] = useState(false);
+  const [detectedColors, setDetectedColors] = useState<string[]>([]);
+  const [palettes, setPalettes] = useState<Palette[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -111,12 +115,30 @@ export default function CustomizePage() {
     setConfig((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = () => update("logo", reader.result as string);
+    reader.onload = async () => {
+      const dataUrl = reader.result as string;
+      update("logo", dataUrl);
+
+      // Extraer colores y generar paletas
+      const colors = await extractColors(dataUrl);
+      setDetectedColors(colors);
+      setPalettes(generatePalettes(colors));
+    };
     reader.readAsDataURL(file);
+  };
+
+  const applyPalette = (palette: Palette) => {
+    setConfig((prev) => ({
+      ...prev,
+      primary: palette.primary,
+      primaryLight: palette.primaryLight,
+      bgDark: palette.bgDark,
+      bgLight: palette.bgLight,
+    }));
   };
 
   const generateConfig = () => {
@@ -195,11 +217,54 @@ export default function CustomizePage() {
             </div>
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
             {config.logo && (
-              <button onClick={() => update("logo", "")} className="text-xs text-muted hover:text-fg-light mt-2 transition-colors">
+              <button onClick={() => { update("logo", ""); setDetectedColors([]); setPalettes([]); }} className="text-xs text-muted hover:text-fg-light mt-2 transition-colors">
                 Quitar logo
               </button>
             )}
           </div>
+
+          {/* Colores detectados del logo */}
+          {detectedColors.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+            >
+              <p className="text-xs text-fg-light/40 mb-2 font-medium">Colores detectados</p>
+              <div className="flex gap-2 mb-4">
+                {detectedColors.map((c, i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.3)] cursor-pointer hover:scale-110 transition-transform"
+                    style={{ backgroundColor: c }}
+                    title={c}
+                    onClick={() => update("primary", c)}
+                  />
+                ))}
+              </div>
+
+              <p className="text-xs text-fg-light/40 mb-2 font-medium">Paletas sugeridas</p>
+              <div className="grid grid-cols-2 gap-2">
+                {palettes.map((p) => (
+                  <motion.button
+                    key={p.name}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => applyPalette(p)}
+                    className="rounded-xl bg-card/60 p-3 hover:bg-card/80 transition-colors text-left"
+                  >
+                    <p className="text-[11px] font-medium text-fg-light/60 mb-2">{p.name}</p>
+                    <div className="flex gap-1">
+                      <div className="flex-1 h-5 rounded" style={{ background: p.primary }} />
+                      <div className="flex-1 h-5 rounded" style={{ background: p.primaryLight }} />
+                      <div className="flex-1 h-5 rounded" style={{ background: p.bgDark }} />
+                      <div className="flex-1 h-5 rounded" style={{ background: p.bgLight }} />
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Colores */}
           <div>
