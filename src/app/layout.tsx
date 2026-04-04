@@ -27,8 +27,19 @@ const mono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: deckConfig.title,
-  description: deckConfig.subtitle,
+  title: `${deckConfig.title} — ${deckConfig.subtitle}`,
+  description: "Crea presentaciones web interactivas con 55 componentes, animaciones y diseño profesional. En 90 minutos, no en 3 días.",
+  openGraph: {
+    title: `${deckConfig.title} — ${deckConfig.subtitle}`,
+    description: "Presentaciones web interactivas con gráficas, animaciones y diseño profesional. 55 componentes listos para usar.",
+    type: "website",
+    siteName: "Slidelab",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${deckConfig.title} — ${deckConfig.subtitle}`,
+    description: "Presentaciones web interactivas. 55 componentes. 90 minutos.",
+  },
 };
 
 export default function RootLayout({
