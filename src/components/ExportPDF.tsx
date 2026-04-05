@@ -12,12 +12,12 @@ interface ExportPDFProps {
 
 export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFProps) {
   const [exporting, setExporting] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [currentCapture, setCurrentCapture] = useState(0);
 
   const exportPDF = useCallback(async () => {
     if (exporting || !containerRef.current) return;
     setExporting(true);
-    setProgress(0);
+    setCurrentCapture(0);
 
     try {
       // Dynamic imports to avoid bundling these in the main chunk
@@ -37,6 +37,9 @@ export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFPr
       });
 
       for (let i = 0; i < totalSlides; i++) {
+        // Update counter FIRST so overlay matches what's behind
+        setCurrentCapture(i + 1);
+
         // Navigate to slide
         onNavigate(i);
 
@@ -74,7 +77,7 @@ export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFPr
         const imgData = canvas.toDataURL("image/jpeg", 0.92);
         pdf.addImage(imgData, "JPEG", 0, 0, width, height);
 
-        setProgress(Math.round(((i + 1) / totalSlides) * 100));
+        // progress tracked by currentCapture state
       }
 
       // Download
@@ -89,7 +92,7 @@ export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFPr
       alert("Error al exportar. Intenta de nuevo.");
     } finally {
       setExporting(false);
-      setProgress(0);
+      setCurrentCapture(0);
     }
   }, [containerRef, totalSlides, onNavigate, exporting]);
 
@@ -128,11 +131,11 @@ export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFPr
                   <span className="material-symbols-outlined text-white text-[24px] animate-spin">progress_activity</span>
                 </div>
                 <p className="text-white font-medium mb-2">Exportando a PDF...</p>
-                <p className="text-white/50 text-sm mb-4">Capturando slide {Math.ceil((progress / 100) * totalSlides)} de {totalSlides}</p>
+                <p className="text-white/50 text-sm mb-4">Capturando slide {currentCapture} de {totalSlides}</p>
                 <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-white/60 rounded-full"
-                    animate={{ width: `${progress}%` }}
+                    animate={{ width: `${(currentCapture / totalSlides) * 100}%` }}
                     transition={{ type: "spring", stiffness: 200, damping: 25 }}
                   />
                 </div>
