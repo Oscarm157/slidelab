@@ -16,9 +16,22 @@ export function useSlideNavigation({
   const [isAnimating, setIsAnimating] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Recuperar slide guardado en sessionStorage
+  // Recuperar slide: primero de ?slide= query param, luego de sessionStorage
   useEffect(() => {
     setMounted(true);
+
+    // Check URL query param ?slide=N (1-based for user friendliness)
+    const params = new URLSearchParams(window.location.search);
+    const slideParam = params.get("slide");
+    if (slideParam) {
+      const parsed = parseInt(slideParam, 10) - 1; // convert to 0-based
+      if (parsed >= 0 && parsed < totalSlides) {
+        setCurrent(parsed);
+        return;
+      }
+    }
+
+    // Fallback to sessionStorage
     const saved = sessionStorage.getItem(storageKey);
     if (saved) {
       const parsed = parseInt(saved, 10);
