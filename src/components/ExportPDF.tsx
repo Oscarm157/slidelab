@@ -41,7 +41,7 @@ export function ExportPDF({ containerRef, totalSlides, onNavigate }: ExportPDFPr
         onNavigate(i);
 
         // Wait for animation to fully complete
-        await new Promise((r) => setTimeout(r, 1500));
+        await new Promise((r) => setTimeout(r, 4500));
 
         // Hide all UI for clean capture
         const nav = container.querySelector("nav");
