@@ -15,7 +15,7 @@ export function COSlide06Results() {
     <Slide variant="light">
       <StaggerReveal>
         <StaggerItem>
-          <span className="font-mono text-sm text-muted/30 block mb-2">06</span>
+          <span className="font-mono text-sm text-muted/50 block mb-2">06</span>
           <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight mb-6">
             Resultados <span className="text-gradient">esperados</span>
           </h2>

@@ -54,7 +54,7 @@ export function COSlide09Investment() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">09</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">09</span>
             <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight mb-6">
               Inversión <span className="text-gradient">& timeline</span>
             </h2>
@@ -64,7 +64,7 @@ export function COSlide09Investment() {
           </StaggerItem>
           <StaggerItem>
             <div className="mt-6">
-              <p className="text-fg-light/25 text-[10px] uppercase tracking-widest mb-3">Timeline del proyecto</p>
+              <p className="text-fg-light/40 text-[10px] uppercase tracking-widest mb-3">Timeline del proyecto</p>
               <MilestoneTimeline milestones={timeline} variant="dark" />
             </div>
           </StaggerItem>

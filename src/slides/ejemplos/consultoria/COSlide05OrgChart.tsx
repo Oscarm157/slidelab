@@ -49,7 +49,7 @@ export function COSlide05OrgChart() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">05</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">05</span>
             <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight mb-2">
               Estructura <span className="text-gradient">propuesta</span>
             </h2>

@@ -14,7 +14,7 @@ export function ComparisonTable({ columns, rows, variant = "light" }: Comparison
   const highlightBg = variant === "dark" ? "bg-primary/10" : "bg-primary/5";
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)" }}>
       <table className="w-full text-left">
         {/* Header */}
         <thead>

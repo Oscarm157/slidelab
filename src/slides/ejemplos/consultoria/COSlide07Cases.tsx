@@ -19,7 +19,7 @@ export function COSlide07Cases() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">07</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">07</span>
             <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight mb-6">
               Casos <span className="text-gradient">similares</span>
             </h2>

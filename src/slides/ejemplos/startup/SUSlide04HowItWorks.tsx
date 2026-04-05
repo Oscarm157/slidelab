@@ -43,7 +43,7 @@ export function SUSlide04HowItWorks() {
         <StaggerReveal>
           <StaggerItem>
             <div className="mb-10">
-              <span className="font-mono text-sm text-muted/30 block mb-2">04</span>
+              <span className="font-mono text-sm text-muted/50 block mb-2">04</span>
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight">
                 De datos fragmentados a
                 <br />

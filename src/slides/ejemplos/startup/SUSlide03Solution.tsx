@@ -68,7 +68,7 @@ export function SUSlide03Solution() {
         <StaggerReveal>
           <StaggerItem>
             <div className="mb-6">
-              <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
+              <span className="font-mono text-sm text-fg-light/35 block mb-2">03</span>
               <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight">
                 Una plataforma,
                 <br />
@@ -138,7 +138,7 @@ export function SUSlide03Solution() {
               <div className="grid grid-cols-3 gap-3">
                 {miniMetrics.map((m) => (
                   <div key={m.label} className="bg-white/[0.03] rounded-xl p-3">
-                    <p className="text-[9px] text-white/30 uppercase tracking-wider">{m.label}</p>
+                    <p className="text-[11px] text-white/30 uppercase tracking-wider">{m.label}</p>
                     <p className="text-white/80 font-mono text-lg font-semibold mt-1">{m.value}</p>
                     <p className={`text-[10px] font-mono mt-0.5 ${m.up ? "text-emerald-400" : "text-rose-400"}`}>
                       {m.change}
@@ -149,7 +149,7 @@ export function SUSlide03Solution() {
 
               {/* Mini chart area (bars ficticios) */}
               <div className="bg-white/[0.03] rounded-xl p-4">
-                <p className="text-[9px] text-white/30 uppercase tracking-wider mb-3">Retención por cohorte</p>
+                <p className="text-[11px] text-white/30 uppercase tracking-wider mb-3">Retención por cohorte</p>
                 <div className="flex items-end gap-1.5 h-16">
                   {[65, 48, 52, 71, 58, 83, 77, 90, 85, 94, 88, 96].map((h, i) => (
                     <motion.div
@@ -175,7 +175,7 @@ export function SUSlide03Solution() {
                   <div className="w-5 h-5 rounded-lg bg-primary/20 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary text-[12px]">auto_awesome</span>
                   </div>
-                  <p className="text-[9px] text-primary/60 uppercase tracking-wider font-semibold">Metrica AI</p>
+                  <p className="text-[11px] text-primary/60 uppercase tracking-wider font-semibold">Metrica AI</p>
                 </div>
 
                 {/* Pregunta */}

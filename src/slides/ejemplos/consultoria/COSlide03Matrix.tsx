@@ -24,7 +24,7 @@ export function COSlide03Matrix() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">03</span>
             <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight mb-2">
               Matriz de <span className="text-gradient">priorización</span>
             </h2>

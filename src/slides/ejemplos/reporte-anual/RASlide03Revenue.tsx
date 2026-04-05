@@ -46,7 +46,7 @@ export function RASlide03Revenue() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">03</span>
             <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight mb-6">
               Desempeño <span className="text-gradient">financiero</span>
             </h2>
@@ -73,7 +73,7 @@ export function RASlide03Revenue() {
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
                           transition={{ delay: 0.5 + i * 0.08 }}
-                          className={`font-mono text-[10px] ${isLast ? "text-primary font-bold" : "text-fg-light/25"}`}
+                          className={`font-mono text-[10px] ${isLast ? "text-primary font-bold" : "text-fg-light/40"}`}
                         >
                           ${r.value}
                         </motion.span>
@@ -92,7 +92,7 @@ export function RASlide03Revenue() {
                             }}
                           />
                         </div>
-                        <span className={`font-mono text-[9px] ${isLast ? "text-fg-light/60" : "text-fg-light/20"}`}>{r.year}</span>
+                        <span className={`font-mono text-[11px] ${isLast ? "text-fg-light/60" : "text-fg-light/35"}`}>{r.year}</span>
                       </div>
                     );
                   })}

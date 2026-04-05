@@ -57,7 +57,7 @@ export function SUSlide02Problem() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="font-mono text-sm text-muted/30 block mb-2">02</span>
+            <span className="font-mono text-sm text-muted/50 block mb-2">02</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight leading-[1.1]">
               Los equipos de producto
               <br />
@@ -83,7 +83,7 @@ export function SUSlide02Problem() {
               <p className="text-fg-dark/60 text-sm mt-2 max-w-xs">
                 de Product Managers dicen que toman decisiones sin datos suficientes
               </p>
-              <p className="text-muted/30 text-[10px] font-mono mt-2 uppercase tracking-wider">
+              <p className="text-muted/50 text-[10px] font-mono mt-2 uppercase tracking-wider">
                 ProductPlan Report 2025
               </p>
             </div>

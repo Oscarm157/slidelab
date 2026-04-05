@@ -21,7 +21,7 @@ export function COSlide02Challenge() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-muted/30 block mb-2">02</span>
+            <span className="font-mono text-sm text-muted/50 block mb-2">02</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight mb-2">
               El reto de <span className="text-gradient">Grupo Industrial Monterrey</span>
             </h2>

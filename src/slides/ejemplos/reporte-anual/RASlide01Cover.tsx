@@ -36,6 +36,7 @@ export function RASlide01Cover() {
         src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1800&q=80"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#060E0E]/90 via-[#060E0E]/60 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#060E0E]/80 via-transparent to-[#060E0E]/30" />
@@ -126,7 +127,7 @@ export function RASlide01Cover() {
                 <span className="font-mono text-xl sm:text-2xl text-fg-light/90 font-bold">
                   <AnimatedCounter target={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={1800} />
                 </span>
-                <span className="block text-[9px] text-fg-light/25 uppercase tracking-[0.2em] mt-1">{stat.label}</span>
+                <span className="block text-[11px] text-fg-light/40 uppercase tracking-[0.2em] mt-1">{stat.label}</span>
               </motion.div>
             </div>
           ))}

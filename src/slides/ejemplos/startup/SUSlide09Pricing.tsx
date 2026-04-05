@@ -54,7 +54,7 @@ export function SUSlide09Pricing() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-fg-light/20 block mb-2">09</span>
+                <span className="font-mono text-sm text-fg-light/35 block mb-2">09</span>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-light tracking-tight">
                   Pricing
                 </h2>

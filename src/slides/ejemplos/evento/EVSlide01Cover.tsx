@@ -34,6 +34,7 @@ export function EVSlide01Cover() {
           src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80"
           alt="DesignConf 2026"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-bg-dark/40" />
       </div>
@@ -169,7 +170,7 @@ export function EVSlide01Cover() {
                 <span className="font-mono text-2xl sm:text-3xl text-fg-light/90 font-bold">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} duration={1800} />
                 </span>
-                <span className="block text-[9px] text-fg-light/25 uppercase tracking-[0.2em] mt-1">
+                <span className="block text-[11px] text-fg-light/40 uppercase tracking-[0.2em] mt-1">
                   {stat.label}
                 </span>
               </motion.div>

@@ -54,7 +54,7 @@ export function RASlide08ESG() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-muted/30 block mb-2">08</span>
+                <span className="font-mono text-sm text-muted/50 block mb-2">08</span>
                 <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight">
                   ESG <span className="text-gradient">& Sustentabilidad</span>
                 </h2>
@@ -71,7 +71,7 @@ export function RASlide08ESG() {
                 <div className="absolute -inset-1 bg-primary/8 rounded-2xl blur-xl" />
                 <div className="relative glow-accent rounded-2xl px-5 py-3 bg-white/80 backdrop-blur-sm text-center">
                   <p className="font-mono text-3xl font-bold text-gradient">AA</p>
-                  <p className="text-muted text-[9px] uppercase tracking-widest">MSCI ESG Rating</p>
+                  <p className="text-muted text-[11px] uppercase tracking-widest">MSCI ESG Rating</p>
                 </div>
               </motion.div>
             </div>

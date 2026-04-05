@@ -66,7 +66,7 @@ export function SUSlide11Team() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-fg-light/20 block mb-2">11</span>
+                <span className="font-mono text-sm text-fg-light/35 block mb-2">11</span>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-light tracking-tight">
                   El equipo
                 </h2>
@@ -119,7 +119,7 @@ export function SUSlide11Team() {
                   {/* Expertise badges */}
                   <div className="flex flex-wrap gap-1 justify-center">
                     {m.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-md bg-primary/8 text-primary/60 text-[9px] font-mono">
+                      <span key={tag} className="px-2 py-0.5 rounded-md bg-primary/8 text-primary/60 text-[11px] font-mono">
                         {tag}
                       </span>
                     ))}
@@ -132,7 +132,7 @@ export function SUSlide11Team() {
           {/* Investor logos con stagger animation */}
           <StaggerItem>
             <div className="mt-8">
-              <p className="text-fg-light/20 text-[10px] uppercase tracking-widest mb-4">Respaldados por</p>
+              <p className="text-fg-light/35 text-[10px] uppercase tracking-widest mb-4">Respaldados por</p>
               <div className="flex items-center gap-6 sm:gap-8 flex-wrap">
                 {logos.map((logo, i) => (
                   <motion.img

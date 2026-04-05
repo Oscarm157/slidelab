@@ -26,7 +26,7 @@ export function RASlide02Highlights() {
         <StaggerReveal>
           <StaggerItem>
             <div className="mb-8">
-              <span className="font-mono text-sm text-muted/30 block mb-2">02</span>
+              <span className="font-mono text-sm text-muted/50 block mb-2">02</span>
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight">
                 Highlights <span className="text-gradient">2025</span>
               </h2>

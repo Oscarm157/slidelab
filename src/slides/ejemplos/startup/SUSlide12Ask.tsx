@@ -100,7 +100,7 @@ export function SUSlide12Ask() {
       <StaggerReveal>
         <StaggerItem>
           <div className="mb-4">
-            <span className="font-mono text-sm text-muted/30 block mb-2">12</span>
+            <span className="font-mono text-sm text-muted/50 block mb-2">12</span>
           </div>
         </StaggerItem>
 

@@ -165,7 +165,7 @@ export function CASlide01Cover() {
                 <span className="font-mono text-2xl sm:text-3xl text-fg-light/90 font-bold">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} duration={1800} />
                 </span>
-                <span className="block text-[9px] text-fg-light/25 uppercase tracking-[0.2em] mt-1">
+                <span className="block text-[11px] text-fg-light/40 uppercase tracking-[0.2em] mt-1">
                   {stat.label}
                 </span>
               </motion.div>

@@ -40,7 +40,7 @@ export function SUSlide05Market() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">05</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">05</span>
           </StaggerItem>
 
           {/* Hero stat — $47B con glow */}
@@ -146,7 +146,7 @@ export function SUSlide05Market() {
                           />
                         </div>
                         {/* Year label */}
-                        <span className={`font-mono text-[9px] ${isLast ? "text-fg-light/60" : "text-fg-light/25"}`}>
+                        <span className={`font-mono text-[11px] ${isLast ? "text-fg-light/60" : "text-fg-light/40"}`}>
                           {y.year}
                         </span>
                       </div>

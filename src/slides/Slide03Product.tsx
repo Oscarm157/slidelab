@@ -29,7 +29,7 @@ export function Slide03Product() {
       <StaggerReveal className="relative">
         <StaggerItem>
           <div className="mb-8">
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">03</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">03</span>
             <div className="w-[60px] h-[2px] bg-primary mb-3" />
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-light tracking-tight">
               55 componentes listos

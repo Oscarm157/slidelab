@@ -82,7 +82,7 @@ export function COSlide01Cover() {
                 <span className="font-mono text-xl sm:text-2xl text-fg-light/90 font-bold">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} decimals={stat.label.includes("ROI") ? 1 : 0} duration={1800} />
                 </span>
-                <span className="block text-[9px] text-fg-light/25 uppercase tracking-[0.2em] mt-1">{stat.label}</span>
+                <span className="block text-[11px] text-fg-light/40 uppercase tracking-[0.2em] mt-1">{stat.label}</span>
               </motion.div>
             </div>
           ))}

@@ -36,7 +36,7 @@ export function RASlide07Operations() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-fg-light/20 block mb-2">07</span>
+                <span className="font-mono text-sm text-fg-light/35 block mb-2">07</span>
                 <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight">
                   Manufactura <span className="text-gradient">& Operaciones</span>
                 </h2>
@@ -46,14 +46,14 @@ export function RASlide07Operations() {
                   <span className="font-mono text-3xl font-bold text-gradient">
                     <AnimatedCounter target={4} duration={800} />
                   </span>
-                  <p className="text-fg-light/30 text-[9px] uppercase tracking-widest">Plantas GMP</p>
+                  <p className="text-fg-light/30 text-[11px] uppercase tracking-widest">Plantas GMP</p>
                 </div>
                 <div className="w-px h-10 bg-primary/20" />
                 <div className="text-right">
                   <span className="font-mono text-3xl font-bold text-fg-light/80">
                     <AnimatedCounter target={3850} suffix="+" duration={1500} />
                   </span>
-                  <p className="text-fg-light/30 text-[9px] uppercase tracking-widest">Operarios</p>
+                  <p className="text-fg-light/30 text-[11px] uppercase tracking-widest">Operarios</p>
                 </div>
               </div>
             </div>

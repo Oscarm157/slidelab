@@ -27,7 +27,7 @@ export function RASlide06RnD() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-muted/30 block mb-2">06</span>
+                <span className="font-mono text-sm text-muted/50 block mb-2">06</span>
                 <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight">
                   Investigación <span className="text-gradient">& Desarrollo</span>
                 </h2>

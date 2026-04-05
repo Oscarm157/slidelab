@@ -28,7 +28,7 @@ export function Slide06Contact() {
 
       <div className="w-full max-w-2xl mx-auto px-6 sm:px-10 min-h-full flex flex-col justify-center py-16 relative">
         <div className="text-center">
-          <span className="font-mono text-sm text-fg-light/20 block mb-6">06</span>
+          <span className="font-mono text-sm text-fg-light/35 block mb-6">06</span>
 
           {/* Métricas */}
           <div className="flex items-center justify-center gap-8 mb-10">
@@ -73,7 +73,7 @@ export function Slide06Contact() {
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <div className="relative flex-1">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-fg-light/20 text-[20px]">mail</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-fg-light/35 text-[20px]">mail</span>
                 <input
                   type="email"
                   value={email}

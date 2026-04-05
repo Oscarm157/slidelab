@@ -21,7 +21,7 @@ export function COSlide04Methodology() {
     <Slide variant="light">
       <StaggerReveal>
         <StaggerItem>
-          <span className="font-mono text-sm text-muted/30 block mb-2">04</span>
+          <span className="font-mono text-sm text-muted/50 block mb-2">04</span>
           <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight mb-2">
             Metodología <span className="text-gradient">Apex</span>
           </h2>

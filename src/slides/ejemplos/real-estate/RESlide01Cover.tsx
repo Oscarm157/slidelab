@@ -20,6 +20,7 @@ export function RESlide01Cover() {
           src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80"
           alt="Residencial Bosque Verde"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         {/* Gradient overlay from left */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f18]/95 via-[#0a1f18]/70 to-transparent" />
@@ -60,7 +61,7 @@ export function RESlide01Cover() {
         </div>
 
         {/* Bottom stats */}
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}

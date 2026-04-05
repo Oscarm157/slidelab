@@ -38,7 +38,7 @@ export function RASlide05Regional() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-fg-light/20 block mb-2">05</span>
+                <span className="font-mono text-sm text-fg-light/35 block mb-2">05</span>
                 <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight">
                   Presencia <span className="text-gradient">global</span>
                 </h2>
@@ -70,7 +70,7 @@ export function RASlide05Regional() {
                       <div className="flex items-center gap-2">
                         <span className="text-base">{r.flag}</span>
                         <span className="text-fg-light/70 text-sm font-medium">{r.name}</span>
-                        <span className="text-fg-light/25 text-[10px]">({r.markets})</span>
+                        <span className="text-fg-light/40 text-[10px]">({r.markets})</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs text-emerald-400 font-semibold">{r.growth}</span>
@@ -99,7 +99,7 @@ export function RASlide05Regional() {
           {/* Top 5 mercados */}
           <StaggerItem>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-fg-light/25 text-[10px] uppercase tracking-widest">Top mercados:</span>
+              <span className="text-fg-light/40 text-[10px] uppercase tracking-widest">Top mercados:</span>
               {topMarkets.map((m, i) => (
                 <motion.div
                   key={m.country}

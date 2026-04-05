@@ -118,13 +118,13 @@ export function EVSlide09Mentorship() {
                   <span className="font-mono text-lg text-primary font-bold">
                     <AnimatedCounter target={30} suffix=" min" duration={1200} />
                   </span>
-                  <span className="block text-muted text-[9px] mt-0.5">Por sesión</span>
+                  <span className="block text-muted text-[11px] mt-0.5">Por sesión</span>
                 </div>
                 <div className="text-center p-3 rounded-xl bg-card/60">
                   <span className="font-mono text-lg text-primary font-bold glow-accent">
                     Gratis
                   </span>
-                  <span className="block text-muted text-[9px] mt-0.5">Con tu entrada</span>
+                  <span className="block text-muted text-[11px] mt-0.5">Con tu entrada</span>
                 </div>
               </div>
             </StaggerItem>

@@ -28,7 +28,7 @@ export function Slide05Location() {
       <StaggerReveal>
         <StaggerItem>
           <div className="mb-8">
-            <span className="font-mono text-sm text-fg-light/20 block mb-2">05</span>
+            <span className="font-mono text-sm text-fg-light/35 block mb-2">05</span>
             <div className="w-[60px] h-[2px] bg-primary mb-3" />
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-fg-light tracking-tight">
               Construidos con esta tecnología

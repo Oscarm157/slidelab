@@ -28,7 +28,7 @@ export function COSlide08ProsCons() {
     <Slide variant="light">
       <StaggerReveal>
         <StaggerItem>
-          <span className="font-mono text-sm text-muted/30 block mb-2">08</span>
+          <span className="font-mono text-sm text-muted/50 block mb-2">08</span>
           <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight mb-6">
             Ventajas <span className="text-gradient">y consideraciones</span>
           </h2>

@@ -115,7 +115,7 @@ export function EVSlide07Music() {
                     <span className="font-mono text-lg text-primary font-bold">
                       <AnimatedCounter target={stat.value} duration={1200} />
                     </span>
-                    <span className="block text-muted text-[9px] mt-0.5">{stat.label}</span>
+                    <span className="block text-muted text-[11px] mt-0.5">{stat.label}</span>
                   </motion.div>
                 ))}
               </div>

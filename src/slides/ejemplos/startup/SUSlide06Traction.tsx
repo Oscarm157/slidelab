@@ -91,7 +91,7 @@ export function SUSlide06Traction() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-muted/30 block mb-2">06</span>
+            <span className="font-mono text-sm text-muted/50 block mb-2">06</span>
           </StaggerItem>
 
           {/* Hero growth stat */}

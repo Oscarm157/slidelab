@@ -18,7 +18,7 @@ export function Slide({
   return (
     <div className={`w-full h-full overflow-y-auto scrollbar-hide touch-pan-y ${bg} ${className}`}>
       <div
-        className={`w-full max-w-6xl mx-auto px-6 sm:px-10 md:px-14 pt-16 sm:pt-14 pb-10 sm:pb-12 ${
+        className={`w-full max-w-6xl mx-auto px-6 sm:px-10 md:px-14 pt-14 sm:pt-16 pb-10 sm:pb-12 ${
           centered ? "min-h-full flex flex-col justify-center" : ""
         }`}
       >

@@ -28,7 +28,7 @@ export function SUSlide10Roadmap() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-muted/30 block mb-2">10</span>
+                <span className="font-mono text-sm text-muted/50 block mb-2">10</span>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight">
                   Roadmap
                 </h2>
@@ -129,7 +129,7 @@ export function SUSlide10Roadmap() {
                             {m.date}
                           </span>
                           {isActive && (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[9px] font-semibold uppercase tracking-wider">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold uppercase tracking-wider">
                               <div className="w-1.5 h-1.5 rounded-full bg-primary pulse-dot" />
                               En curso
                             </span>

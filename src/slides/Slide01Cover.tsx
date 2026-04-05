@@ -74,7 +74,7 @@ export function Slide01Cover() {
           {/* Stat compacto */}
           <div className="hidden sm:block text-right">
             <span className="font-mono text-2xl text-white/80 font-bold">44</span>
-            <span className="block text-[9px] text-white/30 uppercase tracking-widest">componentes</span>
+            <span className="block text-[11px] text-white/30 uppercase tracking-widest">componentes</span>
           </div>
         </div>
       </div>

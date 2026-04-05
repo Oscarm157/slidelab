@@ -30,7 +30,7 @@ export function SUSlide07Funnel() {
         <StaggerItem>
           <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
             <div>
-              <span className="font-mono text-sm text-fg-light/20 block mb-2">07</span>
+              <span className="font-mono text-sm text-fg-light/35 block mb-2">07</span>
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-light tracking-tight">
                 Funnel de <span className="text-gradient">conversión</span>
               </h2>
@@ -79,7 +79,7 @@ export function SUSlide07Funnel() {
                   <span className="material-symbols-outlined text-primary text-[14px]">{r.icon}</span>
                 </div>
                 <p className="font-mono text-sm font-bold text-fg-light/80">{r.value}</p>
-                <p className="text-fg-light/25 text-[9px] uppercase tracking-wider">{r.label}</p>
+                <p className="text-fg-light/40 text-[11px] uppercase tracking-wider">{r.label}</p>
               </motion.div>
             ))}
           </div>

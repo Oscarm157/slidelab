@@ -80,7 +80,7 @@ export function RASlide09Leadership() {
           <StaggerItem>
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <span className="font-mono text-sm text-fg-light/20 block mb-2">09</span>
+                <span className="font-mono text-sm text-fg-light/35 block mb-2">09</span>
                 <h2 className="font-display text-3xl sm:text-4xl text-fg-light tracking-tight">
                   Liderazgo <span className="text-gradient">ejecutivo</span>
                 </h2>
@@ -89,7 +89,7 @@ export function RASlide09Leadership() {
                 <span className="font-mono text-3xl font-bold text-gradient">
                   <AnimatedCounter target={120} suffix="+" duration={1500} />
                 </span>
-                <p className="text-fg-light/30 text-[9px] uppercase tracking-widest">años de experiencia combinada</p>
+                <p className="text-fg-light/30 text-[11px] uppercase tracking-widest">años de experiencia combinada</p>
               </div>
             </div>
           </StaggerItem>
@@ -118,8 +118,8 @@ export function RASlide09Leadership() {
                     />
                   </div>
                   <p className="text-fg-light text-xs font-semibold">{m.name}</p>
-                  <p className="text-primary/60 text-[9px] uppercase tracking-wider">{m.role}</p>
-                  <p className="text-fg-light/25 text-[9px] mt-1 group-hover:text-fg-light/40 transition-colors">{m.prev}</p>
+                  <p className="text-primary/60 text-[11px] uppercase tracking-wider">{m.role}</p>
+                  <p className="text-fg-light/40 text-[11px] mt-1 group-hover:text-fg-light/40 transition-colors">{m.prev}</p>
                 </motion.div>
               ))}
             </div>
@@ -128,7 +128,7 @@ export function RASlide09Leadership() {
           {/* Board stats */}
           <StaggerItem>
             <div className="bg-card/40 rounded-xl p-4 border border-white/[0.04]">
-              <p className="text-fg-light/25 text-[10px] uppercase tracking-widest mb-3">Gobierno corporativo</p>
+              <p className="text-fg-light/40 text-[10px] uppercase tracking-widest mb-3">Gobierno corporativo</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {boardStats.map((bs, i) => (
                   <motion.div
@@ -140,7 +140,7 @@ export function RASlide09Leadership() {
                     className="text-center"
                   >
                     <p className="font-mono text-xl font-bold text-fg-light/80">{bs.value}</p>
-                    <p className="text-fg-light/30 text-[9px] uppercase tracking-wider mt-0.5">{bs.label}</p>
+                    <p className="text-fg-light/30 text-[11px] uppercase tracking-wider mt-0.5">{bs.label}</p>
                   </motion.div>
                 ))}
               </div>

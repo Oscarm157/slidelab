@@ -59,7 +59,7 @@ export function RASlide04Products() {
         <StaggerReveal>
           <StaggerItem>
             <div className="mb-6">
-              <span className="font-mono text-sm text-muted/30 block mb-2">04</span>
+              <span className="font-mono text-sm text-muted/50 block mb-2">04</span>
               <h2 className="font-display text-3xl sm:text-4xl text-fg-dark tracking-tight">
                 Portfolio de <span className="text-gradient">productos</span>
               </h2>
@@ -101,24 +101,24 @@ export function RASlide04Products() {
                     <div className="flex items-center gap-4 mt-3 pt-3 border-t border-black/[0.04]">
                       <div>
                         <p className="font-mono text-lg font-bold text-fg-dark">{d.revenue}</p>
-                        <p className="text-muted text-[9px] uppercase tracking-wider">Revenue</p>
+                        <p className="text-muted text-[11px] uppercase tracking-wider">Revenue</p>
                       </div>
                       <div className="w-px h-8 bg-black/[0.06]" />
                       <div>
                         <p className="font-mono text-sm font-semibold text-emerald-600">{d.growth}</p>
-                        <p className="text-muted text-[9px] uppercase tracking-wider">YoY</p>
+                        <p className="text-muted text-[11px] uppercase tracking-wider">YoY</p>
                       </div>
                       <div className="w-px h-8 bg-black/[0.06]" />
                       <div>
                         <p className="font-mono text-sm font-bold text-fg-dark">{d.units}</p>
-                        <p className="text-muted text-[9px] uppercase tracking-wider">Unidades</p>
+                        <p className="text-muted text-[11px] uppercase tracking-wider">Unidades</p>
                       </div>
                     </div>
 
                     {/* Top products */}
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {d.products.map((p) => (
-                        <span key={p} className="px-2 py-0.5 rounded-md bg-primary/8 text-primary/70 text-[9px] font-mono">
+                        <span key={p} className="px-2 py-0.5 rounded-md bg-primary/8 text-primary/70 text-[11px] font-mono">
                           {p}
                         </span>
                       ))}

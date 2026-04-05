@@ -21,7 +21,7 @@ export function COSlide10NextSteps() {
       <div className="relative">
         <StaggerReveal>
           <StaggerItem>
-            <span className="font-mono text-sm text-muted/30 block mb-2">10</span>
+            <span className="font-mono text-sm text-muted/50 block mb-2">10</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-fg-dark tracking-tight mb-8">
               Siguientes <span className="text-gradient">pasos</span>
             </h2>

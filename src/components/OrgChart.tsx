@@ -51,7 +51,7 @@ function OrgNodeCard({ node, variant, isRoot }: { node: OrgNode; variant: string
 
 export function OrgChart({ root, variant = "light" }: OrgChartProps) {
   return (
-    <div className="flex justify-center overflow-x-auto">
+    <div className="flex justify-center overflow-x-auto" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%)" }}>
       <OrgNodeCard node={root} variant={variant} isRoot />
     </div>
   );
