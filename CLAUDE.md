@@ -24,8 +24,8 @@ src/
 ├── components/              → 55 componentes reutilizables
 │   ├── **Infraestructura:** SlideLayout, Slide, SlideNavigation, ProgressBar, FullscreenToggle
 │   ├── **Encabezados:** SectionHeader
-│   ├── **Cards:** FeatureCard, StatCard, ValueCard, CaseStudyCard, TestimonialCard, SpeakerCard
-│   ├── **Texto:** QuoteBlock, IconList, ProConList
+│   ├── **Cards:** FeatureCard, StatCard, ValueCard, CaseStudyCard, TestimonialCard, SpeakerCard, ContactCard
+│   ├── **Texto:** QuoteBlock, IconList, ProConList, FAQAccordion, CTABanner
 │   ├── **Datos:** AnimatedCounter, KPIRow, DataCallout, MetricDelta, MiniChart, ComparisonTable
 │   ├── **Charts:** ChartWrapper, FunnelChart
 │   ├── **Proceso:** TimelineBlock, ProcessFlow, MilestoneTimeline, StepByStep
@@ -77,6 +77,18 @@ Si cambias los fonts, también actualiza los imports en `src/app/layout.tsx`.
 - Escape: salir de pantalla completa
 - Home/End: primer/último slide
 - Touch: swipe horizontal en móvil
+
+## Skills disponibles
+Lee los archivos en `.skills/` para guías detalladas:
+- **create-presentation.md** — Guía maestra para crear una presentación completa (estructuras por industria, patrones, técnicas premium)
+- **component-guide.md** — Referencia de TODOS los componentes con sus props exactas
+- **add-animation.md** — Agregar animaciones CSS y motion.dev
+- **add-chart.md** — Agregar gráficas con Recharts
+- **add-map.md** — Agregar Google Maps
+- **add-video.md** — Embeber video
+- **customize-theme.md** — Cambiar colores y tipografía
+- **deploy-vercel.md** — Deploy en Vercel
+- **responsive.md** — Hacer responsive un slide
 
 ## El usuario
 Es un profesional creativo, no necesariamente programador. Sé directo, práctico y orientado al resultado visual. Evita explicaciones teóricas de React o TypeScript — mejor muestra el código funcionando.

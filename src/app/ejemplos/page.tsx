@@ -61,6 +61,24 @@ const examples = [
     icon: "insights",
     tags: ["Consultoría", "B2B", "Propuesta"],
   },
+  {
+    title: "Academia Digital",
+    subtitle: "Plataforma de cursos online para profesionales",
+    href: "/ejemplos/educacion",
+    slides: 10,
+    color: "#2563EB",
+    icon: "school",
+    tags: ["Educación", "Cursos", "E-learning"],
+  },
+  {
+    title: "TechPro",
+    subtitle: "Catálogo de productos tecnológicos premium",
+    href: "/ejemplos/catalogo",
+    slides: 10,
+    color: "#059669",
+    icon: "storefront",
+    tags: ["Catálogo", "Ventas", "Producto"],
+  },
 ];
 
 export default function EjemplosPage() {
@@ -81,7 +99,7 @@ export default function EjemplosPage() {
             Ejemplos
           </h1>
           <p className="mt-3 text-white/40 text-base sm:text-lg max-w-xl">
-            6 presentaciones reales para 6 industrias distintas. Cada una usa un tema, tipografía y componentes diferentes.
+            8 presentaciones reales para 8 industrias distintas. Cada una usa un tema, tipografía y componentes diferentes.
           </p>
         </motion.div>
       </div>
