@@ -15,6 +15,7 @@ export function useSlideNavigation({
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isAnimating, setIsAnimating] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [fromUrl, setFromUrl] = useState(false);
 
   // Recuperar slide: primero de ?slide= query param, luego de sessionStorage
   useEffect(() => {
@@ -27,26 +28,31 @@ export function useSlideNavigation({
       const parsed = parseInt(slideParam, 10) - 1; // convert to 0-based
       if (parsed >= 0 && parsed < totalSlides) {
         setCurrent(parsed);
+        setFromUrl(true); // don't use sessionStorage when URL-driven
         return;
       }
     }
 
-    // Fallback to sessionStorage
-    const saved = sessionStorage.getItem(storageKey);
-    if (saved) {
-      const parsed = parseInt(saved, 10);
-      if (parsed >= 0 && parsed < totalSlides) {
-        setCurrent(parsed);
+    // Fallback to sessionStorage (only when NOT in iframe / URL-driven)
+    try {
+      const saved = sessionStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = parseInt(saved, 10);
+        if (parsed >= 0 && parsed < totalSlides) {
+          setCurrent(parsed);
+        }
       }
-    }
+    } catch {}
   }, [storageKey, totalSlides]);
 
-  // Guardar slide actual
+  // Guardar slide actual (skip if URL-driven to avoid cross-iframe pollution)
   useEffect(() => {
-    if (mounted) {
-      sessionStorage.setItem(storageKey, String(current));
+    if (mounted && !fromUrl) {
+      try {
+        sessionStorage.setItem(storageKey, String(current));
+      } catch {}
     }
-  }, [current, mounted, storageKey]);
+  }, [current, mounted, storageKey, fromUrl]);
 
   const goTo = useCallback(
     (index: number, dir?: "next" | "prev") => {

@@ -7,6 +7,7 @@ import { useKeyboardNav } from "@/hooks/useKeyboardNav";
 import { useTouchNav } from "@/hooks/useTouchNav";
 import { SlideNavigation } from "./SlideNavigation";
 import { ProgressBar } from "./ProgressBar";
+import { ExportPDF } from "./ExportPDF";
 import { deckConfig } from "@/config/deck.config";
 
 interface SlideLayoutProps {
@@ -103,6 +104,12 @@ export function SlideLayout({ children }: SlideLayoutProps) {
         containerRef={containerRef}
         showSlideCount={navigation.showSlideCount}
         enableFullscreen={navigation.enableFullscreen}
+      />
+
+      <ExportPDF
+        containerRef={containerRef}
+        totalSlides={totalSlides}
+        onNavigate={(i) => goTo(i)}
       />
 
       {navigation.showProgress && (
